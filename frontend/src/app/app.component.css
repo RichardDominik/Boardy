@@ -1,0 +1,20 @@
+#container {
+    width: 100%;
+}
+
+app-navigation{
+    height: 100%;
+    width: 18%;
+    background-color: #1C1C1C;
+    float: left;
+}
+
+app-container{
+    width: 82%;
+    height: 100%;
+    float: left;
+}
+
+app-header{
+    height: 20px;
+}
