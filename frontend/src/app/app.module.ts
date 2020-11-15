@@ -21,6 +21,8 @@ import { TaskFilterComponent } from './components/container/task-list-container/
 import { TaskOverviewComponent } from './components/container/task-detail-container/task-overview/task-overview.component';
 import { CurrentTaskListComponent } from './components/container/person-detail-container/current-task-list/current-task-list.component';
 import { CurrentTaskListItemComponent } from './components/container/person-detail-container/current-task-list/current-task-list-item/current-task-list-item.component';
+import { OverviewContainerComponent } from './components/container/overview-container/overview-container.component';
+import { TeamListContainerComponent } from './components/container/team-list-container/team-list-container.component';
 
 @NgModule({
   declarations: [
@@ -39,8 +41,10 @@ import { CurrentTaskListItemComponent } from './components/container/person-deta
     TaskFilterComponent,
     TaskOverviewComponent,
     CurrentTaskListComponent,
-    CurrentTaskListItemComponent
-  ],
+    CurrentTaskListItemComponent,
+    OverviewContainerComponent,
+    TeamListContainerComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

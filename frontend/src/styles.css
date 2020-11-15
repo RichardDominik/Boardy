@@ -3,3 +3,12 @@ html, body {
     font-family: 'Mulish';
     margin: 0;
 }
+
+/* we can wrap all container components into div and specify these styles in global style file */
+#container{
+    width: 82%;
+    height: 100vh;
+    float: left;
+    background-color: #F2EDF3;
+  }
+  
