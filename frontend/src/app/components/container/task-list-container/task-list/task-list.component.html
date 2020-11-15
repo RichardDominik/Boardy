@@ -1,1 +1,51 @@
-<p>task-list works!</p>
+
+<h2>All tasks</h2>
+
+<div class="task-filter-button" (click)="showHideFilter()">Filter</div>
+<div *ngIf="showFilter" class="task-filter">
+  <div class="task-filter-option">
+    <label for="task-filter-prio">Priority</label><br>
+    <select id="task-filter-prio" (change)="onFilter($event.target)">
+      <option value=""></option>
+      <option value="LOW">LOW</option>
+      <option value="NORMAL">NORMAL</option>
+      <option value="HIGH">HIGH</option>
+    </select>
+  </div>
+  <div class="task-filter-option">
+    <label for="task-filter-assignee">Assignee</label><br>
+      <select id="task-filter-assignee" (change)="onFilter($event.target)">
+        <option value=""></option>
+      </select>
+  </div>
+  <div class="task-filter-option">
+    <label for="task-filter-status">Status</label><br>
+    <select id="task-filter-status" (change)="onFilter($event.target)">
+      <option value=""></option>
+      <option value="FREE">FREE</option>
+      <option value="IN PROGRESS">IN PROGRESS</option>
+      <option value="TO TEST">TO TEST</option>
+      <option value="DONE">DONE</option>
+    </select>
+  </div>
+  
+</div>
+
+<table class="task-table">
+  <tr>
+    <th>Task detail</th>
+    <th>Status</th>
+    <th>Assignee</th>
+    <th>Deadline/Estimate</th>
+    <th>Priority</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let task of filteredTasks">
+    <td>{{task.title}}</td>
+    <td><div class="task-table-status {{task.status}}">{{task.status}}</div></td>
+    <td>{{task.assignee}}</td>
+    <td>{{task.estimate}}</td>
+    <td><div class="task-table-status {{task.priority}}">{{task.priority}}</div></td>
+    <td>i</td>
+  </tr>
+</table>

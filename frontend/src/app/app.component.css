@@ -13,6 +13,7 @@ app-container{
     width: 82%;
     height: 100%;
     float: left;
+    background-color: #F2EDF3;
 }
 
 app-header{
