@@ -25,7 +25,7 @@ class CreateTasksTable extends Migration
             $table->timestamp('finished_at', 0);
             $table->foreignId('client_id')->constrained('clients');
             $table->foreignId('creator_id')->constrained('users');
-            $table->foreignId('assignee_id')->constrained('users');
+            $table->foreignId('assignee_id')->constrained('users')->nullable();
             $table->timestamps();
         });
     }
