@@ -15,3 +15,14 @@ Route::group([
     Route::post('refresh', 'AuthController@refresh');
     Route::get('user-profile', 'AuthController@userProfile');
 });
+
+
+Route::middleware(['api'])->group(function () {
+    Route::prefix('tasks')->group(static function() {
+        Route::get('/',                                     'TaskController@index');
+        Route::post('/',                                    'TaskController@store');
+        Route::post('/{taskId}',                            'TaskController@update')->name('update');
+        Route::delete('{taskId}',                           'TaskController@destroy')->name('destroy');
+    });
+});
+
