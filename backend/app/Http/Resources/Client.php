@@ -3,10 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\User as UserResource;
-use App\Http\Resources\Task as TaskResource;
 
-class Comment extends JsonResource
+class Client extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,10 +16,8 @@ class Comment extends JsonResource
     {
         return [
             'id' => $this->id,
-            'rank' => $this->rank,
-            'comment' => $this->comment,
-            'task' => TaskResource::make($this->task),
-            'user' => UserResource::make($this->user),
+            'name' => $this->name,
+            'contact' => $this->contact,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

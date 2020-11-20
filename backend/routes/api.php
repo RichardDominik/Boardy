@@ -16,14 +16,22 @@ Route::group([
     Route::get('user-profile', 'AuthController@userProfile');
 });
 
-
-Route::middleware(['api'])->group(function () {
+Route::middleware(['auth:api'])->group(function () {
     Route::prefix('tasks')->group(static function() {
         Route::get('/',                                     'TaskController@index');
         Route::post('/',                                    'TaskController@store');
         Route::get('/{id}',                                 'TaskController@show')->name('update');
         Route::post('/{id}',                                'TaskController@update')->name('update');
         Route::delete('{id}',                               'TaskController@destroy')->name('destroy');
+    });
+
+    Route::prefix('users')->group(static function() {
+        Route::get('/',                                     'UserController@index');
+        Route::get('/all',                                  'UserController@all');
+    });
+
+    Route::prefix('clients')->group(static function() {
+        Route::get('/all',                                  'ClientController@all');
     });
 });
 

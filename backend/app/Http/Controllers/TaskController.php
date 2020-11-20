@@ -24,7 +24,12 @@ class TaskController extends Controller
     }
 
     public function store(StoreTask $request): JsonResponse {
-        return response()->json([], 200);
+        $sanitized = $request->getSanitized();
+        $task = Task::create($sanitized);
+
+        return (new TaskResource($task->loadMissing('comments')))
+            ->response()
+            ->setStatusCode(201);
     }
 
     public function update(UpdateTask $request, int $id): JsonResponse {

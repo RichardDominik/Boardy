@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Task;
+namespace App\Http\Requests\User;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class DestroyTask extends FormRequest
+class IndexUser extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,12 @@ class DestroyTask extends FormRequest
      */
     public function rules(): array
     {
-        return [];
+        return [
+            'orderBy' => ['in:id', 'nullable'],
+            'orderDirection' => ['in:asc,desc', 'nullable'],
+            'page' => ['integer', 'nullable'],
+            'perPage' => ['integer', 'nullable'],
+        ];
     }
 
     protected function failedValidation(Validator $validator)

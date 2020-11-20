@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\Task;
 
+use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateTask extends FormRequest
@@ -26,5 +28,10 @@ class UpdateTask extends FormRequest
         return [
 
         ];
+    }
+
+    protected function failedValidation(Validator $validator)
+    {
+        throw new HttpResponseException(response()->json($validator->errors(), 422));
     }
 }
