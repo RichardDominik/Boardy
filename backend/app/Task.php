@@ -79,6 +79,6 @@ class Task extends Model
 
     public function comments() : HasMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)->orderBy('created_at', 'ASC');
     }
 }

@@ -23,9 +23,9 @@ class CreateTasksTable extends Migration
             $table->float('rank')->nullable();
             $table->timestamp('deadline', 0);
             $table->timestamp('finished_at', 0)->nullable();
-            $table->foreignId('client_id')->constrained('clients');
-            $table->foreignId('creator_id')->constrained('users');
-            $table->foreignId('assignee_id')->constrained('users')->nullable();
+            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
+            $table->foreignId('creator_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('assignee_id')->constrained('users')->nullable()->onDelete('set null');
             $table->timestamps();
         });
     }
