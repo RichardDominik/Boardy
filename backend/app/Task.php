@@ -20,6 +20,7 @@ class Task extends Model
         'client_id',
         'creator_id',
         'assignee_id',
+        'finished_at',
     ];
 
     protected $dates = [

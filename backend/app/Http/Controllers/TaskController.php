@@ -33,7 +33,14 @@ class TaskController extends Controller
     }
 
     public function update(UpdateTask $request, int $id): JsonResponse {
-        return response()->json([], 200);
+        $task = Task::findOrFail($id);
+        $sanitized = $request->getSanitized();
+
+        $task->update($sanitized);
+
+        return (new TaskResource($task->loadMissing('comments')))
+            ->response()
+            ->setStatusCode(201);
     }
 
     public function destroy(DestroyTask $request, int $id): JsonResponse {
