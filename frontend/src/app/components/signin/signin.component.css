@@ -1,0 +1,43 @@
+#auth-wrapper{
+    margin:auto;
+    width: 30%;
+    /* background-color: #F2EDF3; */
+    padding: 30px;
+    height: 50vh;
+
+}
+
+#email-container, #password-container{
+    margin: 10px;
+}
+
+form{
+    display: grid;
+    justify-content: center;
+}
+
+input {
+    border: none;
+    border-bottom: solid 1px gray;
+    background: none;
+    margin-left: 5px;
+}
+
+#title {
+    margin:auto;
+    color: #C77BFF;
+    font-size: xx-large;
+    margin-bottom: 30px;
+}
+
+#submit-button{
+    margin-top: 50px;
+    background-color: #C77BFF;
+    border: none;
+}
+
+a{
+    margin: auto;
+    font-size: smaller;
+    color: grey;
+}
