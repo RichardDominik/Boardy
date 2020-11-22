@@ -1,0 +1,31 @@
+#task-detail-header {
+    padding: 30px 30px 0px 30px;
+    display: inline-flex;
+    width: 100%;
+}
+
+#asign-button{
+    float: right;
+}
+
+#button-container{
+    margin-left: auto;
+}
+
+.people-container{
+    width: 40%;
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 10px;
+}
+
+h4{
+    font-size: large;
+    font-weight: bold;
+}
+
+.people-detail {
+    margin:15px;
+}

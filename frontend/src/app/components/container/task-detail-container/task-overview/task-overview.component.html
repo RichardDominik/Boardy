@@ -1,1 +1,26 @@
-<p>task-overview works!</p>
+<div class="overview">
+    <table class="overview-table">
+        <thead>
+            <tr>
+                <td>Estimate</td>
+                <td>Status</td>
+                <td>Priority</td>
+                <td>Rank</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{task.estimate}}</td>
+                <td><div class="task-table-status {{task.status}}">{{task.status}}</div></td>
+                <td><div class="task-table-status {{task.priority}}">{{task.priority}}</div></td>
+                <td>{{task.rank}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="task-description-container">
+        <h3 class="task-description-title">Description</h3>
+        <div class="task-description-content">
+            <p>{{task.description}}</p>
+        </div>
+    </div>
+</div>

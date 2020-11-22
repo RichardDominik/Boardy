@@ -1,0 +1,66 @@
+.overview{
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
+    margin: 0px 20px;
+}
+
+.overview-table{
+    width: 100%;
+}
+
+.overview-table thead tr td {
+    text-align: left;
+    font-weight: bold;
+}
+
+.task-table-status {
+    display: inline-block;
+    padding: 0 7px;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  .PROGRESS {
+    border: 1px solid orange;
+    background-color: orange;
+  }
+  
+  .DONE {
+    border: 1px solid blue;
+    background-color: blue;
+  }
+  
+  .FREE {
+    border: 1px solid green;
+    background-color: green;
+  }
+  
+  .TEST {
+    border: 1px solid rgb(104, 211, 214);
+    background-color: rgb(104, 211, 214);
+  }
+  
+  .HIGH {
+    border: 1px solid red;
+    background-color: red;
+  }
+  
+  .LOW {
+    border: 1px solid green;
+    background-color: green;
+  }
+  
+  .NORMAL {
+    border: 1px solid gold;
+    background-color: gold;
+  }
+  
+  .task-description-container{
+      margin-top: 30px;
+  }
+   .task-description-title {
+    font-size: large;
+    font-weight: bold;
+   }

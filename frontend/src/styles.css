@@ -7,7 +7,6 @@ html, body {
 /* we can wrap all container components into div and specify these styles in global style file */
 #container{
     width: 85%;
-    height: 100vh;
     float: left;
     background-color: #F2EDF3;
 }

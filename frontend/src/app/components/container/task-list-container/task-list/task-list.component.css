@@ -77,5 +77,14 @@ h2 {
   background-color: gold;
 }
 
+#task-list-container{
+  display: block;
+  margin: 40px 40px 0 40px;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  background-color: white;
+  padding: 0 20px 20px 0;
+}
+
 
 

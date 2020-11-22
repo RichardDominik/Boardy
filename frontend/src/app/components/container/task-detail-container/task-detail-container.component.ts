@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { TaskService } from 'src/app/shared/services/task.service';
 
 @Component({
   selector: 'app-task-detail-container',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDetailContainerComponent implements OnInit {
 
-  constructor() { }
+  task;
+
+  constructor(
+    private route:ActivatedRoute,
+    private taskService:TaskService
+  ) { }
 
   ngOnInit(): void {
+    let sub = this.route.queryParams.subscribe(params => {
+      this.task =  this.taskService.getTaskById(params['id']);
+    });
+    sub.unsubscribe()
   }
-
 }
