@@ -25,9 +25,4 @@ export class AuthService {
   signin(user: User): Observable<any> {
     return this.http.post<any>('http://notabot.duckdns.org:56124/api/auth/login', user);
   }
-
-  // Access user profile
-  profileUser(): Observable<any> {
-    return this.http.get('http://notabot.duckdns.org:56124/api/auth/user-profile');
-  }
 }
