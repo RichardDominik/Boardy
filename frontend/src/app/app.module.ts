@@ -24,6 +24,7 @@ import { CurrentTaskListItemComponent } from './components/container/person-deta
 import { CommonModule } from '@angular/common';
 import { OverviewContainerComponent } from './components/container/overview-container/overview-container.component';
 import { TeamListContainerComponent } from './components/container/team-list-container/team-list-container.component';
+import { TeamListComponent } from './components/container/team-list-container/team-list/team-list.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TeamListContainerComponent } from './components/container/team-list-con
     CurrentTaskListComponent,
     CurrentTaskListItemComponent,
     OverviewContainerComponent,
-    TeamListContainerComponent
+    TeamListContainerComponent,
+    TeamListComponent
     ],
   imports: [
     BrowserModule,

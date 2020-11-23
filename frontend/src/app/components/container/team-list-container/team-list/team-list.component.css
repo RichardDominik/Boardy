@@ -1,19 +1,19 @@
-.task-table {
+.team-table {
   width: 100%;
   padding-top: 20px;
 }
 
-.task-table td {
+.team-table td {
   text-align: center;
   border-bottom: 1px solid #dddddd;
   padding: 20px 0 20px 0;
 }
 
-.task-table tr {
+.team-table tr {
   text-align: center;
 }
 
-.task-table th {
+.team-table th {
   border-bottom: 2px solid #dddddd;
 }
 
@@ -22,52 +22,11 @@ h2 {
   float:left;
 }
 
-.task-filter-button {
-  float: right;
-  margin: 20px 20px 20px 20px;
-  cursor: pointer;
-}
-
-.task-filter {
-  float: left;
-  width: 100%;
-  margin: 0 40px 0 40px;
-}
-
-.hidden{
-  display: none;
-}
-
-.task-filter-option {
-  display: inline-block;
-  margin-right: 40px;
-}
-
 .task-table-status {
   display: inline-block;
   padding: 0 7px;
   border-radius: 10px;
   color: white;
-}
-
-.PROGRESS {
-  border: 1px solid orange;
-  background-color: orange;
-}
-
-.DONE {
-  border: 1px solid blue;
-  background-color: blue;
-}
-
-.FREE {
-  border: 1px solid green;
-  background-color: green;
-}
-
-.TEST {
-  border: 1px solid rgb(104, 211, 214);
-  background-color: rgb(104, 211, 214);
 }
 
 .HIGH {
@@ -85,7 +44,7 @@ h2 {
   background-color: gold;
 }
 
-#task-list-container{
+#team-list-container{
   display: block;
   margin: 30px 30px 30px 30px;
   border: 1px solid #dddddd;
@@ -93,10 +52,8 @@ h2 {
   background-color: white;
 }
 
-.task-table-item:hover{
+.team-table-item:hover{
   background-color: #f7f8f9;
   cursor: pointer;
+  border-radius: 20px;
 }
-
-
-

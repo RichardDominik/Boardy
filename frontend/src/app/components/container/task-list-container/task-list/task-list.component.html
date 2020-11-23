@@ -1,8 +1,6 @@
 <div id="task-list-container">
   <h2>All tasks</h2>
 
-<h2>All tasks</h2>
-
 <div class="task-filter-button" (click)="showHideFilter()">Filter</div>
 <div [ngClass]="{'task-filter': true, 'hidden': showFilter === false}">
   <div class="task-filter-option">
@@ -49,15 +47,13 @@
       <th>Assignee</th>
       <th>Deadline/Estimate</th>
       <th>Priority</th>
-      <th></th>
     </tr>
-    <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task.id)">
+    <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task.id)" class="task-table-item">
       <td>{{task.title}}</td>
       <td><div class="task-table-status {{task.status}}">{{task.status}}</div></td>
       <td>{{task.assignee}}</td>
       <td>{{task.estimate}}</td>
       <td><div class="task-table-status {{task.priority}}">{{task.priority}}</div></td>
-      <td>i</td>
     </tr>
   </table>
 </div>

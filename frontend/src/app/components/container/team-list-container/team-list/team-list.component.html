@@ -1,0 +1,19 @@
+<div id="team-list-container">
+  <h2>Team</h2>
+  <table class="team-table">
+    <tr>
+      <th>Name</th>
+      <th>Rank</th>
+      <th>Average task priority</th>
+      <th>Average time on task</th>
+      <th>Current tasks</th>
+    </tr>
+    <tr *ngFor="let person of team" (click)="showPersonDetail(person.id)" class="team-table-item">
+      <td>{{person.name}}</td>
+      <td>{{person.rank}}</td>
+      <td><div class="task-table-status {{person.average_priority}}">{{person.average_priority}}</div></td>
+      <td>{{person.average_time}}</td>
+      <td>{{person.current_tasks}}</td>
+    </tr>
+  </table>
+</div>
