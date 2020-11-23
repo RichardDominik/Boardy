@@ -1,1 +1,40 @@
-<p>task-detail-container works!</p>
+<div id="task-detail-header">
+    <h1 id="task-title">Task1</h1>
+    <div *ngIf="task.status == 'FREE'" id="button-container">
+        <button id="assign-button" class="btn btn-block btn-primary" (click)="assignToMe()">Assign to me</button>
+    </div>
+</div>
+<app-task-overview [task]="task"></app-task-overview>
+<div class="people-container">
+    <div class="people-detail">
+        <h4>Project manager</h4>
+        <span>{{task.creator}}</span>
+    </div>
+    <div class="people-detail">
+        <h4>Client</h4>
+        <span>{{task.client}}</span>
+    </div>
+    <div class="people-detail">
+        <h4>Assignee</h4>
+        <span *ngIf="task.assignee != null; else notAssigned">{{task.assignee}}</span>
+        <ng-template #notAssigned>
+            This task has no assignee
+        </ng-template>
+    </div>
+</div>
+
+<div id="myModal" class="modal" role="dialog" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div>Table header</div>
+        <table>
+            <tr *ngFor="let member of team">
+                <td>{{member.name}}</td>
+                <td>{{member.rank}}</td>
+                <td>{{member.average_priority}}</td>
+                <td>{{member.average_time}}</td>
+                <td>{{member.current_tasks}}</td>
+            </tr>
+        </table>
+      
+    </div>
+</div>

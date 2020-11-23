@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.scss']
+  styleUrls: ['./signup.component.css']
 })
 
 export class SignupComponent implements OnInit {
@@ -38,9 +38,8 @@ export class SignupComponent implements OnInit {
       },
       () => {
         this.registerForm.reset()
-        this.router.navigate(['login']);
+        this.router.navigate(['/sign-in']);
       }
     )
   }
-
 }

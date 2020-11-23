@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TaskService } from 'src/app/shared/services/task.service';
 
 @Component({
   selector: 'app-task-list',
@@ -7,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TaskListComponent implements OnInit {
 
-  @Input() tasks;
+  tasks;
   filteredTasks;
   showFilter = false;
   filter= {
@@ -16,9 +18,14 @@ export class TaskListComponent implements OnInit {
     assignee: ""
   };
 
-  constructor() { }
+  constructor(
+    public router:Router,
+    public activatedRoute: ActivatedRoute,
+    public taskService: TaskService
+  ) {}
 
   ngOnInit(): void {
+    this.tasks = this.taskService.getTasks();
     this.filteredTasks = this.tasks;
   }
 
@@ -56,6 +63,11 @@ export class TaskListComponent implements OnInit {
       newTasks = newTasks.filter(task => task.assignee == this.filter.assignee);
     }
     this.filteredTasks = newTasks;
+  }
+
+  showTaskDetail(id:string){
+    this.router.navigate(['task-detail'],  { queryParams: { id: id }, relativeTo:this.activatedRoute });
+   // this.router.navigate(['dashboard']);
   }
 
 }

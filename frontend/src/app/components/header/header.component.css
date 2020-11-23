@@ -8,3 +8,22 @@
     display: inline-block;
     width: 100%;
 }
+
+.fa-power-off{
+    color: grey;
+}
+
+.fa {
+    font-size: 30px;
+}
+
+#signout-container{
+    display: inline;
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#signout-container:hover{
+    cursor: pointer;
+}
