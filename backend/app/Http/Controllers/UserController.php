@@ -6,7 +6,7 @@ use App\Http\Requests\User\AllUser;
 use App\Http\Requests\User\IndexUser;
 use App\Http\Requests\User\ShowUser;
 use App\Http\Resources\UserCollection;
-use App\Http\Resources\user as UserResource;
+use App\Http\Resources\User as UserResource;
 use App\User;
 
 class UserController extends Controller
