@@ -2,7 +2,7 @@
 <h2>All tasks</h2>
 
 <div class="task-filter-button" (click)="showHideFilter()">Filter</div>
-<div *ngIf="showFilter" class="task-filter">
+<div [ngClass]="{'task-filter': true, 'hidden': showFilter === false}">
   <div class="task-filter-option">
     <label for="task-filter-prio">Priority</label><br>
     <select id="task-filter-prio" (change)="onFilter($event.target)">

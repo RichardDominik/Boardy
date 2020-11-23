@@ -21,6 +21,7 @@ import { TaskFilterComponent } from './components/container/task-list-container/
 import { TaskOverviewComponent } from './components/container/task-detail-container/task-overview/task-overview.component';
 import { CurrentTaskListComponent } from './components/container/person-detail-container/current-task-list/current-task-list.component';
 import { CurrentTaskListItemComponent } from './components/container/person-detail-container/current-task-list/current-task-list-item/current-task-list-item.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { CurrentTaskListItemComponent } from './components/container/person-deta
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [
     {

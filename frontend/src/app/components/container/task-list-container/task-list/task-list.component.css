@@ -30,6 +30,10 @@ h2 {
   margin: 0 40px 0 40px;
 }
 
+.hidden{
+  display: none;
+}
+
 .task-filter-option {
   display: inline-block;
   margin-right: 40px;
