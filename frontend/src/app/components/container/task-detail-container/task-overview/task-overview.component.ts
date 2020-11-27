@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Priority } from 'src/app/model/enum/priority.enum';
+import { Status } from 'src/app/model/enum/status.enum';
 
 @Component({
   selector: 'app-task-overview',
@@ -6,6 +8,10 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./task-overview.component.css']
 })
 export class TaskOverviewComponent implements OnInit {
+
+  //enums
+  priority = Priority;
+  status = Status;
 
   @Input() task;
 

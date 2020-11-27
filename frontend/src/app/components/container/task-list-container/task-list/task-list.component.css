@@ -48,39 +48,40 @@ h2 {
   padding: 0 7px;
   border-radius: 10px;
   color: white;
+  text-transform: uppercase;
 }
 
-.PROGRESS {
+.in_progress {
   border: 1px solid orange;
   background-color: orange;
 }
 
-.DONE {
+.done {
   border: 1px solid blue;
   background-color: blue;
 }
 
-.FREE {
+.free {
   border: 1px solid green;
   background-color: green;
 }
 
-.TEST {
+.to_test {
   border: 1px solid rgb(104, 211, 214);
   background-color: rgb(104, 211, 214);
 }
 
-.HIGH {
+.high {
   border: 1px solid red;
   background-color: red;
 }
 
-.LOW {
+.low {
   border: 1px solid green;
   background-color: green;
 }
 
-.NORMAL {
+.medium {
   border: 1px solid gold;
   background-color: gold;
 }
@@ -96,6 +97,19 @@ h2 {
 .task-table-item:hover{
   background-color: #f7f8f9;
   cursor: pointer;
+}
+
+.task-table-title {
+  text-align: left;
+  padding-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 40%;
+}
+
+.task-table thead tr th:first {
+  text-align: left !important;
 }
 
 

@@ -8,15 +8,15 @@
 <div class="people-container">
     <div class="people-detail">
         <h4>Project manager</h4>
-        <span>{{task.creator}}</span>
+        <span>{{task.creator.name}}</span>
     </div>
-    <div class="people-detail">
+    <!-- <div *ngIf="task.client != null" class="people-detail">
         <h4>Client</h4>
         <span>{{task.client}}</span>
-    </div>
+    </div> -->
     <div class="people-detail">
         <h4>Assignee</h4>
-        <span *ngIf="task.assignee != null; else notAssigned">{{task.assignee}}</span>
+        <span *ngIf="task.assignee != null; else notAssigned">{{task.assignee.name}}</span>
         <ng-template #notAssigned>
             This task has no assignee
         </ng-template>

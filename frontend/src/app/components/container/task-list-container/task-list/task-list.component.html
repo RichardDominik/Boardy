@@ -16,9 +16,9 @@
     <label for="task-filter-assignee">Assignee</label><br>
       <select id="task-filter-assignee" (change)="onFilter($event.target)">
         <option value=""></option>
-        <option value="LOW">LOW</option>
-        <option value="NORMAL">NORMAL</option>
-        <option value="HIGH">HIGH</option>
+        <option value="low">LOW</option>
+        <option value="medium">NORMAL</option>
+        <option value="high">HIGH</option>
       </select>
     </div>
     <div class="task-filter-option">
@@ -31,29 +31,31 @@
       <label for="task-filter-status">Status</label><br>
       <select id="task-filter-status" (change)="onFilter($event.target)">
         <option value=""></option>
-        <option value="FREE">FREE</option>
-        <option value="IN PROGRESS">IN PROGRESS</option>
-        <option value="TO TEST">TO TEST</option>
-        <option value="DONE">DONE</option>
+        <option value="free">FREE</option>
+        <option value="in_progress">IN PROGRESS</option>
+        <option value="to_test">TO TEST</option>
+        <option value="done">DONE</option>
       </select>
     </div>
     
   </div>
   
   <table class="task-table">
-    <tr>
+    <thead>
+   <tr>
       <th>Task detail</th>
       <th>Status</th>
       <th>Assignee</th>
       <th>Deadline/Estimate</th>
       <th>Priority</th>
     </tr>
+    </thead>
     <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task.id)" class="task-table-item">
-      <td>{{task.title}}</td>
-      <td><div class="task-table-status {{task.status}}">{{task.status}}</div></td>
-      <td>{{task.assignee}}</td>
+      <td><div class="task-table-title">{{task.title}}</div></td>
+      <td><div class="task-table-status {{task.status}}">{{status[task.status]}}</div></td>
+      <td>{{task.assignee.name}}</td>
       <td>{{task.estimate}}</td>
-      <td><div class="task-table-status {{task.priority}}">{{task.priority}}</div></td>
+      <td><div class="task-table-status {{task.priority}}">{{priority[task.priority]}}</div></td>
     </tr>
   </table>
 </div>

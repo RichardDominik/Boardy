@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TeamMember } from 'src/app/model/team-member';
 import { TaskService } from 'src/app/shared/services/task.service';
 import { TeamService } from 'src/app/shared/services/team.service';
 
@@ -10,8 +11,7 @@ import { TeamService } from 'src/app/shared/services/team.service';
 })
 export class PersonDetailContainerComponent implements OnInit {
 
-  person;
-  tasks;
+  person:TeamMember;
 
   constructor(private route:ActivatedRoute,
     private taskService:TaskService,
@@ -19,11 +19,13 @@ export class PersonDetailContainerComponent implements OnInit {
 
   ngOnInit(): void {
     let sub = this.route.queryParams.subscribe(params => {
-      this.person =  this.teamService.getMemberById(params['id']);
+      this.teamService.getTeamMemberById(params['id']).subscribe(
+        data=>{
+          this.person = data;
+        }
+      )
     });
     sub.unsubscribe();
-
-    this.tasks = this.taskService.getTasks().filter(task => task.assignee == this.person.name && task.status != "DONE");
   }
 
 }

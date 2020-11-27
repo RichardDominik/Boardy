@@ -22,37 +22,37 @@
     color: white;
   }
   
-  .PROGRESS {
+  .in_progress {
     border: 1px solid orange;
     background-color: orange;
   }
   
-  .DONE {
+  .done {
     border: 1px solid blue;
     background-color: blue;
   }
   
-  .FREE {
+  .free {
     border: 1px solid green;
     background-color: green;
   }
   
-  .TEST {
+  .to_test {
     border: 1px solid rgb(104, 211, 214);
     background-color: rgb(104, 211, 214);
   }
   
-  .HIGH {
+  .high {
     border: 1px solid red;
     background-color: red;
   }
   
-  .LOW {
+  .low {
     border: 1px solid green;
     background-color: green;
   }
   
-  .NORMAL {
+  .medium {
     border: 1px solid gold;
     background-color: gold;
   }
