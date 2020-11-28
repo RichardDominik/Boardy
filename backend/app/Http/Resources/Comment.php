@@ -20,7 +20,6 @@ class Comment extends JsonResource
             'id' => $this->id,
             'rank' => $this->rank,
             'comment' => $this->comment,
-            'task' => TaskResource::make($this->task),
             'user' => UserResource::make($this->user),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,

@@ -16,7 +16,21 @@ class TaskController extends Controller
 {
 
     public function index(IndexTask $request) : TaskCollection {
-        return new TaskCollection(Task::paginate());
+        return new TaskCollection(Task::orderBy('id')->where(function ($query) use ($request){
+
+            if($request->has('status')) {
+                $query->whereIn('status', $request->get('status'));
+            }
+
+            if($request->has('priority')) {
+                $query->whereIn('priority', $request->get('priority'));
+            }
+
+            if($request->has('assignee')) {
+                $query->whereIn('assignee_id', $request->get('assignee'));
+            }
+
+        })->paginate());
     }
 
     public function show(ShowTask $request, $id) : TaskResource {
