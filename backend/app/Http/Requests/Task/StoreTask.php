@@ -31,10 +31,10 @@ class StoreTask extends FormRequest
         return [
             'title' => ['required', 'string'],
             'estimate' => ['required', 'integer'],
-            'description' => ['required', 'string'],
+            'description' => ['sometimes', 'nullable'],
             'priority' => ['required', Rule::in(Task::getAllPriorities())],
             'deadline' => ['required', 'date_format:d/m/Y H:i'],
-            'client_id' => ['required', 'integer'],
+            'client_id' => ['sometimes', 'nullable'],
             'assignee_id' => ['sometimes', 'nullable'],
         ];
     }

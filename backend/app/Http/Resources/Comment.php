@@ -4,7 +4,6 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\User as UserResource;
-use App\Http\Resources\Task as TaskResource;
 
 class Comment extends JsonResource
 {

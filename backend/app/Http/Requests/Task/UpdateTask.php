@@ -48,6 +48,10 @@ class UpdateTask extends FormRequest
             $sanitized['deadline'] = Carbon::createFromFormat('d/m/Y H:i', $this->get('deadline'));
         }
 
+        if ($this->has('assignee_id')) {
+            $sanitized['status'] = Task::TASK_STATUS_IN_PROGRESS;
+        }
+
         if ($this->has('status') && $this->get('status') == Task::TASK_STATUS_DONE) {
             $sanitized['finished_at'] = Carbon::now();
         }

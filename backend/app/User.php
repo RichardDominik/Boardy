@@ -46,6 +46,9 @@ class User extends Authenticatable implements JWTSubject {
         'email_verified_at' => 'datetime',
     ];
 
+
+    protected $appends = ['avg_task_priority', 'rank', 'avg_time'];
+
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *
@@ -64,7 +67,7 @@ class User extends Authenticatable implements JWTSubject {
         return [];
     }
 
-    public function getAvgTaskPriority() {
+    public function getAvgTaskPriorityAttribute() {
         $avgPriority = round($this->assignedTasks->pluck('priority')->map(function($item){
             return ['priority' => Task::getPriorityRank($item)];
         })->avg('priority'));
@@ -72,7 +75,7 @@ class User extends Authenticatable implements JWTSubject {
         return $avgPriority == 0 ? 0 : Task::getPriorityByRank($avgPriority);
     }
 
-    public function getRank() {
+    public function getRankAttribute() {
         $rank = 0;
         $count = 0;
 
@@ -86,7 +89,7 @@ class User extends Authenticatable implements JWTSubject {
         return ($rank != 0 && $count != 0) ? round($rank / $count, 1) : 0;
     }
 
-    public function getAvgTime() {
+    public function getAvgTimeAttribute() {
         $getAverageCompletionTime = DB::table('tasks')
             ->select(DB::raw("((DATE_PART('day', finished_at::timestamp - created_at::timestamp) * 24 + 
                 DATE_PART('hour', finished_at::timestamp - created_at::timestamp)) * 60 +
