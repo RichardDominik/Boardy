@@ -19,8 +19,8 @@ export class TaskService {
      return this.http.get<any>('http://notabot.duckdns.org:56124/api/tasks/'+id);
    }
 
-   updateTask(task_id:number, id:string){
-    return this.http.post<any>('http://notabot.duckdns.org:56124/api/tasks/'+task_id, {"assignee_id": id});
+   updateTask(task_id:number, body:any){
+    return this.http.post<any>('http://notabot.duckdns.org:56124/api/tasks/'+task_id, body);
    }
 
    createTask(task:any){

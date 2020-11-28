@@ -1,4 +1,4 @@
-.overview{
+.overview {
     border: 1px solid transparent;
     border-radius: 20px;
     background-color: white;
@@ -6,7 +6,7 @@
     margin: 0px 20px;
 }
 
-.overview-table{
+.overview-table {
     width: 100%;
 }
 
@@ -20,12 +20,21 @@
     padding: 0 7px;
     border-radius: 10px;
     color: white;
-  }
-  
-  .task-description-container{
-      margin-top: 30px;
-  }
-   .task-description-title {
+}
+
+.task-description-container {
+    margin-top: 30px;
+}
+
+.task-description-title {
     font-size: large;
     font-weight: bold;
-   }
+}
+
+.edit:hover {
+    cursor: pointer;
+}
+
+.description-area {
+    width: 80%;
+}

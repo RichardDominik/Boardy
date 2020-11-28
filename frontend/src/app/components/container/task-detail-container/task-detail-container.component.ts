@@ -50,7 +50,7 @@ export class TaskDetailContainerComponent implements OnInit {
   assignToMe(){
     this.userService.getUser().subscribe((user:any) => {
 
-      this.taskService.updateTask(this.task.id, user.id).subscribe(
+      this.taskService.updateTask(this.task.id, {"assignee_id": user.id}).subscribe(
         data=>{
           this.task.assignee = user;
           this.task.status = "in_progress";
@@ -70,7 +70,7 @@ export class TaskDetailContainerComponent implements OnInit {
   }
 
   unasign(){
-    this.taskService.updateTask(this.task.id, null).subscribe(
+    this.taskService.updateTask(this.task.id, {"assignee_id": null}).subscribe(
       data=>{
         this.task.assignee = null;
         this.task.status = "free";
