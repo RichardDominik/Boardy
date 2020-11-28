@@ -48,7 +48,7 @@ class Task extends Model
             self::TASK_STATUS_FREE,
             self::TASK_STATUS_IN_PROGRESS,
             self::TASK_STATUS_TO_TEST,
-            self::TASK_STATUS_DONE
+            self::TASK_STATUS_DONE,
         ];
     }
 
@@ -59,6 +59,27 @@ class Task extends Model
             self::TASK_PRIORITY_MEDIUM,
             self::TASK_PRIORITY_HIGH,
         ];
+    }
+
+    public static function getAllPrioritiesRanks() : array
+    {
+         return [
+            self::TASK_PRIORITY_LOW => 1,
+            self::TASK_PRIORITY_MEDIUM => 2,
+            self::TASK_PRIORITY_HIGH => 3,
+        ];
+    }
+
+    public static function getPriorityRank(string $priority) : int
+    {
+        $prioritiesRanks = self::getAllPrioritiesRanks();
+        return $prioritiesRanks[$priority];
+    }
+
+    public static function getPriorityByRank(int $priority) : string
+    {
+        $prioritiesRanks = self::getAllPrioritiesRanks();
+        return array_search($priority, $prioritiesRanks);
     }
 
     /* ************************ RELATIONS ************************* */

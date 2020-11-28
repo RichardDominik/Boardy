@@ -24,6 +24,9 @@ class User extends JsonResource
             'updated_at' => $this->updated_at,
             'createdTasks' => TaskResource::collection($this->whenLoaded('createdTasks')),
             'assignedTasks' => TaskResource::collection($this->whenLoaded('assignedTasks')),
+            'avg_task_priority' => $this->getAvgTaskPriority(),
+            'rank' => $this->getRank(),
+            'avg_time' => $this->getAvgTime(),
         ];
     }
 }

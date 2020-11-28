@@ -25,7 +25,7 @@ Route::middleware(['auth:api'])->group(function () {
 
     Route::prefix('users')->group(static function() {
         Route::get('/',                                     'UserController@index');
-        Route::get('/get/{id}',                                 'UserController@show');
+        Route::get('/get/{id}',                             'UserController@show');
         Route::get('/all',                                  'UserController@all');
     });
 
