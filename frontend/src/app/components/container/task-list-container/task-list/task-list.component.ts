@@ -14,6 +14,10 @@ export class TaskListComponent implements OnInit {
 
   priority = Priority;
   status = Status;
+  pagination = {
+    prev: "",
+    next: ""
+  }
   
   tasks:Task[];
   filteredTasks:Task[];
@@ -33,10 +37,17 @@ export class TaskListComponent implements OnInit {
   ngOnInit(): void {
     this.taskService.getTasks().subscribe(
       result=>{
-        this.tasks = result.data.map(val=> new Task(val))
-        this.filteredTasks = this.tasks;
+       this.mapData(result)
       }
     );
+  }
+
+  mapData(result:any) {
+    this.tasks = result.data.map(val=> new Task(val))
+    this.filteredTasks = this.tasks;
+
+    this.pagination.prev = result.links.prev;
+    this.pagination.next = result.links.next;
   }
 
   showHideFilter() {
@@ -77,6 +88,26 @@ export class TaskListComponent implements OnInit {
 
   showTaskDetail(id:string){
     this.router.navigate(['task-detail'],  { queryParams: { id: id }, relativeTo:this.activatedRoute });
+  }
+
+  addTask(){
+    this.router.navigate(['new-task'], {relativeTo:this.activatedRoute });
+  }
+
+  prevPage(){
+    this.taskService.getPage(this.pagination.prev).subscribe(
+      result=>{
+        this.mapData(result);
+      }
+    )
+  }
+
+  nextPage(){
+    this.taskService.getPage(this.pagination.next).subscribe(
+      result=>{
+        this.mapData(result);
+      }
+    )
   }
 
 }

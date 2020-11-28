@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Priority } from './enum/priority.enum';
 import { Status } from './enum/status.enum';
 
@@ -14,7 +15,7 @@ export class Task{
     created_at:string;
     updated_at:string;
     finished_at:string;
-    client_id:number;
+    client_id:number = 0;
     creator:{
         "id":number;
         "name":string;

@@ -1,3 +1,6 @@
+<div class="right-button-container">
+  <button class="add-button" (click)="addTask()"> + Add task</button>
+</div>
 <div id="task-list-container">
   <h2>All tasks</h2>
 
@@ -50,12 +53,21 @@
       <th>Priority</th>
     </tr>
     </thead>
-    <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task.id)" class="task-table-item">
-      <td><div class="task-table-title">{{task.title}}</div></td>
-      <td><div class="task-table-status {{task.status}}">{{status[task.status]}}</div></td>
-      <td>{{task.assignee.name}}</td>
+    <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
+      <td><div class="task-table-title">{{task?.title}}</div></td>
+      <td><div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div></td>
+      <td *ngIf="task.assignee != null; else empty">{{task?.assignee.name}}</td>
+      <ng-template #empty>
+        <td></td>
+      </ng-template>
       <td>{{task.estimate}}</td>
-      <td><div class="task-table-status {{task.priority}}">{{priority[task.priority]}}</div></td>
+      <td><div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div></td>
     </tr>
   </table>
+  <div class="pagination">
+    <div class="pagination-links">
+      <a *ngIf="pagination.prev != null" (click)="prevPage()">&laquo;</a>
+      <a *ngIf="pagination.next != null" (click)="nextPage()">&raquo;</a>
+    </div>  
+  </div>
 </div>

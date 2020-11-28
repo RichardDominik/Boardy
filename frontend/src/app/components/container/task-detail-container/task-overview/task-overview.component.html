@@ -10,17 +10,17 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{task.estimate}}</td>
-                <td><div class="task-table-status {{task.status}}">{{status[task.status]}}</div></td>
-                <td><div class="task-table-status {{task.priority}}">{{priority[task.priority]}}</div></td>
-                <td>{{task.rank}}</td>
+                <td>{{task?.estimate}}</td>
+                <td><div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div></td>
+                <td><div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div></td>
+                <td>{{task?.rank}}</td>
             </tr>
         </tbody>
     </table>
     <div class="task-description-container">
         <h3 class="task-description-title">Description</h3>
         <div class="task-description-content">
-            <p>{{task.description}}</p>
+            <p>{{task?.description}}</p>
         </div>
     </div>
 </div>

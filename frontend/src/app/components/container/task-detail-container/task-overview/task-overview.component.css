@@ -22,41 +22,6 @@
     color: white;
   }
   
-  .in_progress {
-    border: 1px solid orange;
-    background-color: orange;
-  }
-  
-  .done {
-    border: 1px solid blue;
-    background-color: blue;
-  }
-  
-  .free {
-    border: 1px solid green;
-    background-color: green;
-  }
-  
-  .to_test {
-    border: 1px solid rgb(104, 211, 214);
-    background-color: rgb(104, 211, 214);
-  }
-  
-  .high {
-    border: 1px solid red;
-    background-color: red;
-  }
-  
-  .low {
-    border: 1px solid green;
-    background-color: green;
-  }
-  
-  .medium {
-    border: 1px solid gold;
-    background-color: gold;
-  }
-  
   .task-description-container{
       margin-top: 30px;
   }

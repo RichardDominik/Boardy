@@ -51,44 +51,9 @@ h2 {
   text-transform: uppercase;
 }
 
-.in_progress {
-  border: 1px solid orange;
-  background-color: orange;
-}
-
-.done {
-  border: 1px solid blue;
-  background-color: blue;
-}
-
-.free {
-  border: 1px solid green;
-  background-color: green;
-}
-
-.to_test {
-  border: 1px solid rgb(104, 211, 214);
-  background-color: rgb(104, 211, 214);
-}
-
-.high {
-  border: 1px solid red;
-  background-color: red;
-}
-
-.low {
-  border: 1px solid green;
-  background-color: green;
-}
-
-.medium {
-  border: 1px solid gold;
-  background-color: gold;
-}
-
 #task-list-container{
   display: block;
-  margin: 30px 30px 30px 30px;
+  margin: 15px 30px 30px 30px;
   border: 1px solid #dddddd;
   border-radius: 20px;
   background-color: white;
@@ -112,5 +77,33 @@ h2 {
   text-align: left !important;
 }
 
+.right-button-container {
+  text-align: right;
+}
 
+.add-button {
+  margin: 10px;
+  background-color: #C77BFF;
+  border: none;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  outline: none;
+}
 
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: x-large;
+  transition: background-color .3s;
+}
+
+.pagination-links {
+  margin: auto;
+}
+
+.pagination a:hover{
+  cursor: pointer;
+}

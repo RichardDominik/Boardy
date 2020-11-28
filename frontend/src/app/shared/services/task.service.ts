@@ -19,7 +19,15 @@ export class TaskService {
      return this.http.get<any>('http://notabot.duckdns.org:56124/api/tasks/'+id);
    }
 
-   updateTask(task:Task){
-    return this.http.post<any>('http://notabot.duckdns.org:56124/api/tasks',task);
+   updateTask(task_id:number, id:string){
+    return this.http.post<any>('http://notabot.duckdns.org:56124/api/tasks/'+task_id, {"assignee_id": id});
+   }
+
+   createTask(task:any){
+    return this.http.post<any>('http://notabot.duckdns.org:56124/api/tasks', task);
+   }
+
+   getPage(url: string){
+    return this.http.get<any>(url);
    }
 }

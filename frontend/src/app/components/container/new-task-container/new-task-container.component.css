@@ -1,0 +1,68 @@
+.new-task-container {
+    margin: auto;
+    background-color: white;
+    border: 0.5px solid lightgrey;
+    border-radius: 10px;
+    width: 30%;
+    margin: 50px auto 50px auto;
+}
+
+.text-input, .text-input:active {
+    border: none;
+    border-bottom: solid 1px gray;
+    background: none;
+    outline: none;
+    width: 100%;
+}
+
+.field {
+    margin: 50px;
+}
+
+.field h4 {
+    margin-bottom: 10px;
+}
+
+.task-deadline {
+    margin-bottom: 50px;
+}
+
+.fields-container {
+    margin: auto;
+}
+
+.right-button-container {
+    text-align: right;
+}
+
+.add-button {
+    margin: 10px 50px 30px 0px;
+    background-color: #C77BFF;
+    border: none;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    outline: none;
+    font-size: larger;
+}
+
+.task-table-status {
+    display: inline-block;
+    padding: 0 7px;
+    border-radius: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.task-table-status:hover {
+    cursor: pointer;
+}
+
+.task-priority-values {
+    display: flex;
+    justify-content: space-between;
+}
+
+.active-priority {
+    border: 3px solid darkslategrey;
+}

@@ -9,6 +9,7 @@ export class User{
   email_verified_at:string;
   created_at: string;
   updated_at: string;
+  is_project_manager:boolean;
 }
 
 @Injectable({
