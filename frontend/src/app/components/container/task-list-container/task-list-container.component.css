@@ -1,0 +1,4 @@
+#container{
+  background-color: #F2EDF3;
+  height: calc(100vh - 50px); /*50px = header*/
+}
