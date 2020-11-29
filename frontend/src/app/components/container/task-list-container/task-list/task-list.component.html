@@ -1,3 +1,6 @@
+<div class="right-button-container">
+  <button class="add-button" (click)="addTask()"> + Add task</button>
+</div>
 <div id="task-list-container">
   <h2>All tasks</h2>
 
@@ -22,29 +25,40 @@
       <label for="task-filter-status">Status</label><br>
       <select id="task-filter-status" (change)="onFilter($event.target)">
         <option value=""></option>
-        <option value="FREE">FREE</option>
-        <option value="IN PROGRESS">IN PROGRESS</option>
-        <option value="TO TEST">TO TEST</option>
-        <option value="DONE">DONE</option>
+        <option value="free">FREE</option>
+        <option value="in_progress">IN PROGRESS</option>
+        <option value="to_test">TO TEST</option>
+        <option value="done">DONE</option>
       </select>
     </div>
     
   </div>
   
   <table class="task-table">
-    <tr>
+    <thead>
+   <tr>
       <th>Task detail</th>
       <th>Status</th>
       <th>Assignee</th>
       <th>Deadline/Estimate</th>
       <th>Priority</th>
     </tr>
-    <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task.id)" class="task-table-item">
-      <td>{{task.title}}</td>
-      <td><div class="task-table-status {{task.status}}">{{task.status}}</div></td>
-      <td>{{task.assignee}}</td>
+    </thead>
+    <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
+      <td><div class="task-table-title">{{task?.title}}</div></td>
+      <td><div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div></td>
+      <td *ngIf="task.assignee != null; else empty">{{task?.assignee.name}}</td>
+      <ng-template #empty>
+        <td></td>
+      </ng-template>
       <td>{{task.estimate}}</td>
-      <td><div class="task-table-status {{task.priority}}">{{task.priority}}</div></td>
+      <td><div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div></td>
     </tr>
   </table>
+  <div class="pagination">
+    <div class="pagination-links">
+      <a *ngIf="pagination.prev != null" (click)="prevPage()">&laquo;</a>
+      <a *ngIf="pagination.next != null" (click)="nextPage()">&raquo;</a>
+    </div>  
+  </div>
 </div>

@@ -29,3 +29,9 @@ h4{
 .people-detail {
     margin:15px;
 }
+
+.unassign {
+    background-color: goldenrod;
+    outline: none;
+    border: 1px solid transparent;
+}

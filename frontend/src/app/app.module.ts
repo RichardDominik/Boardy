@@ -21,10 +21,14 @@ import { TaskFilterComponent } from './components/container/task-list-container/
 import { TaskOverviewComponent } from './components/container/task-detail-container/task-overview/task-overview.component';
 import { CurrentTaskListComponent } from './components/container/person-detail-container/current-task-list/current-task-list.component';
 import { CurrentTaskListItemComponent } from './components/container/person-detail-container/current-task-list/current-task-list-item/current-task-list-item.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { OverviewContainerComponent } from './components/container/overview-container/overview-container.component';
 import { TeamListContainerComponent } from './components/container/team-list-container/team-list-container.component';
 import { TeamListComponent } from './components/container/team-list-container/team-list/team-list.component';
+import localeSk from '@angular/common/locales/sk';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+registerLocaleData(localeSk, 'sk-SK');
 
 @NgModule({
   declarations: [
@@ -54,7 +58,8 @@ import { TeamListComponent } from './components/container/team-list-container/te
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

@@ -14,8 +14,8 @@
       <tbody>
           <tr>
               <td>{{person.rank}}</td>
-              <td><div class="person-table-status {{person.average_priority}}">{{person.average_priority}}</div></td>
-              <td>{{person.average_time}}</td>
+              <td><div class="person-table-status {{person.avg_priority}}">{{person.avg_priority}}</div></td>
+              <td>{{person.avg_time}}</td>
               <td>{{person.current_tasks}}</td>
           </tr>
       </tbody>
@@ -36,7 +36,7 @@
       <th>Deadline/Estimate</th>
       <th>Priority</th>
     </tr>
-    <tr *ngFor="let task of tasks" class="task-table-item">
+    <tr *ngFor="let task of person.current_tasks" class="task-table-item">
       <td>{{task.title}}</td>
       <td><div class="task-table-status {{task.status}}">{{task.status}}</div></td>
       <td>{{task.estimate}}</td>

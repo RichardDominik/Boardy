@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Priority } from 'src/app/model/enum/priority.enum';
+import { Status } from 'src/app/model/enum/status.enum';
+import { Task } from 'src/app/model/task';
 import { TaskService } from 'src/app/shared/services/task.service';
 
 @Component({
@@ -9,8 +12,15 @@ import { TaskService } from 'src/app/shared/services/task.service';
 })
 export class TaskListComponent implements OnInit {
 
-  tasks;
-  filteredTasks;
+  priority = Priority;
+  status = Status;
+  pagination = {
+    prev: "",
+    next: ""
+  }
+  
+  tasks:Task[];
+  filteredTasks:Task[];
   showFilter = false;
   filter= {
     prio: "",
@@ -25,8 +35,19 @@ export class TaskListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.tasks = this.taskService.getTasks();
+    this.taskService.getTasks().subscribe(
+      result=>{
+       this.mapData(result)
+      }
+    );
+  }
+
+  mapData(result:any) {
+    this.tasks = result.data.map(val=> new Task(val))
     this.filteredTasks = this.tasks;
+
+    this.pagination.prev = result.links.prev;
+    this.pagination.next = result.links.next;
   }
 
   showHideFilter() {
@@ -54,20 +75,39 @@ export class TaskListComponent implements OnInit {
   filterTasks() {
     let newTasks = this.tasks;
     if (this.filter.prio){
-      newTasks = newTasks.filter(task => task.priority == this.filter.prio);
+      newTasks = newTasks.filter(task => Priority[task.priority] == this.filter.prio);
     }
     if (this.filter.status){
-      newTasks = newTasks.filter(task => task.status == this.filter.status);
+      newTasks = newTasks.filter(task => Status[task.status] == this.filter.status);
     }
     if (this.filter.assignee){
-      newTasks = newTasks.filter(task => task.assignee == this.filter.assignee);
+      newTasks = newTasks.filter(task => task.assignee.id.toString() == this.filter.assignee);
     }
     this.filteredTasks = newTasks;
   }
 
   showTaskDetail(id:string){
     this.router.navigate(['task-detail'],  { queryParams: { id: id }, relativeTo:this.activatedRoute });
-   // this.router.navigate(['dashboard']);
+  }
+
+  addTask(){
+    this.router.navigate(['new-task'], {relativeTo:this.activatedRoute });
+  }
+
+  prevPage(){
+    this.taskService.getPage(this.pagination.prev).subscribe(
+      result=>{
+        this.mapData(result);
+      }
+    )
+  }
+
+  nextPage(){
+    this.taskService.getPage(this.pagination.next).subscribe(
+      result=>{
+        this.mapData(result);
+      }
+    )
   }
 
 }

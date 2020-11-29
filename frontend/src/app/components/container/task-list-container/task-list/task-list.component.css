@@ -47,41 +47,56 @@ h2 {
   padding: 0 7px;
   border-radius: 10px;
   color: white;
+  text-transform: uppercase;
 }
 
-.PROGRESS {
-  border: 1px solid orange;
-  background-color: orange;
+#task-list-container{
+  display: block;
+  margin: 15px 30px 30px 30px;
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  background-color: white;
 }
 
-.DONE {
-  border: 1px solid blue;
-  background-color: blue;
+.task-table-item:hover{
+  background-color: #f7f8f9;
+  cursor: pointer;
 }
 
-.FREE {
-  border: 1px solid green;
-  background-color: green;
+.task-table-title {
+  text-align: left;
+  padding-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 40%;
 }
 
-.TEST {
-  border: 1px solid rgb(104, 211, 214);
-  background-color: rgb(104, 211, 214);
+.task-table thead tr th:first {
+  text-align: left !important;
 }
 
-.HIGH {
-  border: 1px solid red;
-  background-color: red;
+.right-button-container {
+  text-align: right;
 }
 
-.LOW {
-  border: 1px solid green;
-  background-color: green;
+.add-button {
+  margin: 10px;
+  background-color: #C77BFF;
+  border: none;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  outline: none;
 }
 
-.NORMAL {
-  border: 1px solid gold;
-  background-color: gold;
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-size: x-large;
+  transition: background-color .3s;
 }
 
 #task-list-container{
@@ -95,10 +110,10 @@ h2 {
   overflow-x: hidden;
 }
 
-.task-table-item:hover{
-  background-color: #f7f8f9;
-  cursor: pointer;
+.pagination-links {
+  margin: auto;
 }
 
-
-
+.pagination a:hover{
+  cursor: pointer;
+}

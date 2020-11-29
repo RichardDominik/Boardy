@@ -1,1 +1,32 @@
-<p>new-task-container works!</p>
+<div class="new-task-container">
+    <form [formGroup]="taskForm" (ngSubmit)="createNewTask()">
+        <div class="fields-container">    
+            <div class="field task-title">
+                <h4>Title</h4>
+                <input class="text-input form-control" type="text" formControlName="title" />
+            </div>
+            <div class="field task-priority">
+                <h4>Priority</h4>
+                <input class="form-control" hidden formControlName="priority" value="{{priority}}"/>
+                <div class="task-priority-values">
+                    <div class="task-table-status low" (click)="choosePriority('low')" [ngClass]="{'active-priority': priority == 'low'}">LOW</div>
+                    <div class="task-table-status medium"(click)="choosePriority('medium')" [ngClass]="{'active-priority': priority == 'medium'}">MEDIUM</div>
+                    <div class="task-table-status high"(click)="choosePriority('high')" [ngClass]="{'active-priority': priority == 'high'}">HIGH</div>
+                </div>
+            </div>
+            <div class="field task-estimate">
+                <h4>Estimate hour budget</h4>
+                <input class="text-input form-control" type="text" formControlName="estimate"/>
+            </div>
+            <div class="field task-deadline">
+                <h4>Deadline</h4>
+                <!-- TODO datepicker -->
+                <input class="text-input form-control" type="text" formControlName="deadline" placeholder="27/11/2020 00:00" value="27/11/2020 00:00"/> 
+            </div>
+        </div> 
+        <div class="right-button-container">
+            <button type="submit" class="add-button">Add</button>
+        </div> 
+    </form>
+   
+</div>
