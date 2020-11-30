@@ -13,6 +13,10 @@ export class TeamListComponent implements OnInit {
 
   priority = Priority;
   team:TeamMember[];
+  pagination = {
+    prev: "",
+    next: ""
+  }
 
   constructor(public router:Router,
     public activatedRoute: ActivatedRoute,
@@ -22,12 +26,34 @@ export class TeamListComponent implements OnInit {
   ngOnInit(): void {
     this.teamService.getTeamMembers().subscribe(
       result=>{
-       this.team= result.data.map(val => new TeamMember(val));
+       this.mapData(result)
       }
     );
   }
 
   showPersonDetail(id: string) {
     this.router.navigate(['person-detail'],  { queryParams: { id: id }, relativeTo:this.activatedRoute });
+  }
+
+  mapData(result:any) {
+    this.team = result.data.map(val=> new TeamMember(val))
+    this.pagination.prev = result.links.prev;
+    this.pagination.next = result.links.next;
+  }
+
+  prevPage(){
+    this.teamService.getPage(this.pagination.prev).subscribe(
+      result=>{
+        this.mapData(result);
+      }
+    )
+  }
+
+  nextPage(){
+    this.teamService.getPage(this.pagination.next).subscribe(
+      result=>{
+        this.mapData(result);
+      }
+    )
   }
 }

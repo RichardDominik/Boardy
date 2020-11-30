@@ -1,16 +1,15 @@
 .team-table {
     display: inline-block;
     margin-top: 28px;
-    height: calc(100% - 30px - 85px);
+    height: calc(100% - 30px - 124px);
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
-
 thead {
-    position: absolute; 
-    margin-top: -28px; 
+    position: absolute;
+    margin-top: -28px;
     display: inline-block;
     width: calc(100% - 200px - 62px);
     background-color: white;
@@ -59,11 +58,28 @@ h2 {
     margin: 30px 30px 30px 30px;
     height: calc(100% - 60px);
     border: 1px solid #dddddd;
-    border-radius: 20px 10px 10px 20px;
+    border-radius: 20px;
     background-color: white;
 }
 
 .team-table-item:hover {
     background-color: #f7f8f9;
     cursor: pointer;
+}
+
+.pagination-links {
+    margin: auto;
+}
+
+.pagination a:hover {
+    cursor: pointer;
+}
+
+.pagination a {
+    color: black;
+    float: left;
+    padding: 2px 16px 8px 16px;
+    text-decoration: none;
+    font-size: x-large;
+    transition: background-color .3s;
 }

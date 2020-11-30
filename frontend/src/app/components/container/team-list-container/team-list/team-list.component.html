@@ -16,9 +16,17 @@
                 <td>
                     <div class="task-table-status {{person.avg_task_priority}}">{{priority[person.avg_task_priority]}}</div>
                 </td>
-                <td><div>{{person.avg_time ? person.avg_time : "&nbsp;"}}</div></td>
+                <td>
+                    <div>{{person.avg_time ? person.avg_time : "&nbsp;"}}</div>
+                </td>
             </tr>
         </tbody>
-        
+
     </table>
+    <div class="pagination">
+        <div class="pagination-links">
+            <a *ngIf="pagination.prev != null" (click)="prevPage()">&laquo;</a>
+            <a *ngIf="pagination.next != null" (click)="nextPage()">&raquo;</a>
+        </div>
+    </div>
 </div>
