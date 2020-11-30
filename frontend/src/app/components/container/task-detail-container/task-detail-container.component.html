@@ -7,7 +7,7 @@
         <button class="btn btn-block btn-primary unassign" (click)="unasign()">Unassign</button>
     </div>
 </div>
-<app-task-overview [task]="task" [user]="currentUser"></app-task-overview>
+<app-task-overview *ngIf="task" [task]="task" [user]="currentUser"></app-task-overview>
 <div class="people-container">
     <div class="people-detail">
         <h4>Project manager</h4>

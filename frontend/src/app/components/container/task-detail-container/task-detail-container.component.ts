@@ -70,7 +70,7 @@ export class TaskDetailContainerComponent implements OnInit {
   }
 
   unasign(){
-    this.taskService.updateTask(this.task.id, {"assignee_id": null}).subscribe(
+    this.taskService.updateTask(this.task.id, {"assignee_id": null, "status":"free"}).subscribe(
       data=>{
         this.task.assignee = null;
         this.task.status = "free";

@@ -3,11 +3,13 @@
     background-color: white;
     border: 0.5px solid lightgrey;
     border-radius: 10px;
-    width: 30%;
+    width: 40%;
+    height: auto;
     margin: 50px auto 50px auto;
 }
 
-.text-input, .text-input:active {
+.text-input,
+.text-input:active {
     border: none;
     border-bottom: solid 1px gray;
     background: none;
@@ -65,4 +67,10 @@
 
 .active-priority {
     border: 3px solid darkslategrey;
+}
+
+::ng-deep .mat-input-underline {
+    visibility: visible;
+    z-index: -999;
+    display: block;
 }

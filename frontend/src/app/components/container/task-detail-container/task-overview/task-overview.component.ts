@@ -10,7 +10,7 @@ import { TaskService } from 'src/app/shared/services/task.service';
   templateUrl: './task-overview.component.html',
   styleUrls: ['./task-overview.component.css']
 })
-export class TaskOverviewComponent implements OnInit, AfterViewInit {  
+export class TaskOverviewComponent implements OnInit {  
   @Input() task;
   @Input() user;
 
@@ -26,13 +26,11 @@ export class TaskOverviewComponent implements OnInit, AfterViewInit {
     private taskService: TaskService
     ) { }
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.descritionGroup = this.formBuilder.group({
       description: this.task?.description
     });
-  }
-
-  ngOnInit(): void {
+    console.log(this.task.description)
   }
 
   editDescription(){
