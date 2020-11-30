@@ -31,7 +31,7 @@
             </div>
             <div class="task-description-content">
                 <p *ngIf="!isDescriptionEditMode">{{task?.description}}</p>
-                <textarea class="description-area" *ngIf="isDescriptionEditMode" name="description" rows="10" formControlName="description">{{task.description}}</textarea>
+                <textarea class="description-area" *ngIf="isDescriptionEditMode" formControlName="description" rows="10" value="task?.description">{{task?.description}}</textarea>
             </div>
             <button type="submit" *ngIf="isDescriptionEditMode">Submit</button>
         </form>
