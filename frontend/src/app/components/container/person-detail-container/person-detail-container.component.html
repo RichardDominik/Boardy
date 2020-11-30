@@ -26,21 +26,26 @@
 <div class="task-container">
     <h4>Current tasks</h4>
     <table class="task-table">
-        <tr>
-            <th>Task detail</th>
-            <th>Status</th>
-            <th>Deadline/Estimate</th>
-            <th>Priority</th>
-        </tr>
-        <tr *ngFor="let task of person?.current_tasks" class="task-table-item">
-            <td>{{task?.title}}</td>
-            <td>
-                <div class="task-table-status {{task.status}}">{{status[task?.status]}}</div>
-            </td>
-            <td>{{task?.estimate}}</td>
-            <td>
-                <div class="task-table-status {{task.priority}}">{{priority[task?.priority]}}</div>
-            </td>
-        </tr>
+        <thead>
+            <tr>
+                <th>Task detail</th>
+                <th>Status</th>
+                <th>Deadline/Estimate</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of person?.current_tasks" class="task-table-item">
+                <td>{{task?.title}}</td>
+                <td>
+                    <div class="task-table-status {{task.status}}">{{status[task?.status]}}</div>
+                </td>
+                <td>{{task?.estimate}}</td>
+                <td>
+                    <div class="task-table-status {{task.priority}}">{{priority[task?.priority]}}</div>
+                </td>
+            </tr>
+        </tbody>
+
     </table>
 </div>

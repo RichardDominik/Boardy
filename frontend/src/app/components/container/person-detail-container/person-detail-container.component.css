@@ -76,3 +76,17 @@ h4 {
     border-radius: 10px;
     color: white;
 }
+
+thead,
+tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+tbody {
+    display: block;
+    overflow-y: auto;
+    table-layout: fixed;
+    max-height: 300px;
+}
