@@ -5,27 +5,30 @@
                 <h4>Title</h4>
                 <input class="text-input form-control" type="text" formControlName="title" />
             </div>
-            <div class="field task-priority">
-                <h4>Priority</h4>
-                <input #priorityField class="form-control" hidden formControlName="priority" [value]="priority" />
-                <div class="task-priority-values">
-                    <div class="task-table-status low" (click)="choosePriority('low')" [ngClass]="{'active-priority': priority == 'low'}">LOW</div>
-                    <div class="task-table-status medium" (click)="choosePriority('medium')" [ngClass]="{'active-priority': priority == 'medium'}">MEDIUM</div>
-                    <div class="task-table-status high" (click)="choosePriority('high')" [ngClass]="{'active-priority': priority == 'high'}">HIGH</div>
+            <div class="other-fields">
+                <div class="field task-priority">
+                    <h4>Priority</h4>
+                    <input #priorityField class="form-control" hidden formControlName="priority" [value]="priority" />
+                    <div class="task-priority-values">
+                        <div class="task-table-status low" (click)="choosePriority('low')" [ngClass]="{'active-priority': priority == 'low'}">LOW</div>
+                        <div class="task-table-status medium" (click)="choosePriority('medium')" [ngClass]="{'active-priority': priority == 'medium'}">MEDIUM</div>
+                        <div class="task-table-status high" (click)="choosePriority('high')" [ngClass]="{'active-priority': priority == 'high'}">HIGH</div>
+                    </div>
+                </div>
+                <div class="field task-estimate">
+                    <h4>Estimate hour budget</h4>
+                    <input class="text-input form-control estimate" type="text" formControlName="estimate" />
+                </div>
+                <div class="field task-deadline">
+                    <h4>Deadline</h4>
+                    <mat-form-field>
+                        <input class="form-control" matInput [matDatepicker]="picker" formControlName="deadline" (dateInput)="onDate($event)">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker (dateChange)="onDate($event)"></mat-datepicker>
+                    </mat-form-field>
                 </div>
             </div>
-            <div class="field task-estimate">
-                <h4>Estimate hour budget</h4>
-                <input class="text-input form-control" type="text" formControlName="estimate" />
-            </div>
-            <div class="field task-deadline">
-                <h4>Deadline</h4>
-                <mat-form-field>
-                    <input class="form-control" matInput [matDatepicker]="picker" formControlName="deadline" (dateInput)="onDate($event)">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker (dateChange)="onDate($event)"></mat-datepicker>
-                </mat-form-field>
-            </div>
+
         </div>
         <div class="right-button-container">
             <button type="submit" class="add-button">Add</button>

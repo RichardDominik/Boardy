@@ -3,7 +3,7 @@
     background-color: white;
     border: 0.5px solid lightgrey;
     border-radius: 10px;
-    width: 40%;
+    width: 80%;
     height: auto;
     margin: 50px auto 50px auto;
 }
@@ -18,7 +18,7 @@
 }
 
 .field {
-    margin: 50px;
+    margin: 40px;
 }
 
 .field h4 {
@@ -54,6 +54,7 @@
     border-radius: 10px;
     color: white;
     text-transform: uppercase;
+    margin: 10px;
 }
 
 .task-table-status:hover {
@@ -61,7 +62,7 @@
 }
 
 .task-priority-values {
-    display: flex;
+    display: grid;
     justify-content: space-between;
 }
 
@@ -73,4 +74,12 @@
     visibility: visible;
     z-index: -999;
     display: block;
+}
+
+.other-fields {
+    display: flex;
+}
+
+.estimate {
+    margin-top: 40px;
 }
