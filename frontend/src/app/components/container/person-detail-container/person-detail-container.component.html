@@ -1,46 +1,52 @@
 <div id="person-detail-header">
-  <h1 id="person-name">{{person.name}}</h1>
+    <h1 id="person-name">{{person.name}}</h1>
 </div>
 <div class="overview">
-  <table class="overview-table">
-      <thead>
-          <tr>
-              <td>Rank</td>
-              <td>Average task priority</td>
-              <td>Average time on task</td>
-              <td>Current tasks</td>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td>{{person.rank}}</td>
-              <td><div class="person-table-status {{person.avg_priority}}">{{person.avg_priority}}</div></td>
-              <td>{{person.avg_time}}</td>
-              <td>{{person.current_tasks}}</td>
-          </tr>
-      </tbody>
-  </table>
-  <div class="person-description-container">
-      <h3 class="person-description-title">Description</h3>
-      <div class="person-description-content">
-          Frontend developer
-      </div>
-  </div>
+    <table class="overview-table">
+        <thead>
+            <tr>
+                <td>Rank</td>
+                <td>Average task priority</td>
+                <td>Average time on task</td>
+                <td>Current tasks</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{person.rank}}</td>
+                <td>
+                    <div class="person-table-status {{person.avg_task_priority}}">{{priority[person.avg_task_priority]}}</div>
+                </td>
+                <td>{{person.avg_time}}</td>
+                <td>{{person.current_tasks.length}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="person-description-container">
+        <h3 class="person-description-title">Description</h3>
+        <div class="person-description-content">
+            Frontend developer
+        </div>
+    </div>
 </div>
 <div class="task-container">
-  <h4>Current tasks</h4>
-  <table class="task-table">
-    <tr>
-      <th>Task detail</th>
-      <th>Status</th>
-      <th>Deadline/Estimate</th>
-      <th>Priority</th>
-    </tr>
-    <tr *ngFor="let task of person.current_tasks" class="task-table-item">
-      <td>{{task.title}}</td>
-      <td><div class="task-table-status {{task.status}}">{{task.status}}</div></td>
-      <td>{{task.estimate}}</td>
-      <td><div class="task-table-status {{task.priority}}">{{task.priority}}</div></td>
-    </tr>
-  </table>
+    <h4>Current tasks</h4>
+    <table class="task-table">
+        <tr>
+            <th>Task detail</th>
+            <th>Status</th>
+            <th>Deadline/Estimate</th>
+            <th>Priority</th>
+        </tr>
+        <tr *ngFor="let task of person.current_tasks" class="task-table-item">
+            <td>{{task.title}}</td>
+            <td>
+                <div class="task-table-status {{task.status}}">{{status[task.status]}}</div>
+            </td>
+            <td>{{task.estimate}}</td>
+            <td>
+                <div class="task-table-status {{task.priority}}">{{priority[task.priority]}}</div>
+            </td>
+        </tr>
+    </table>
 </div>

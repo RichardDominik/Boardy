@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Priority } from 'src/app/model/enum/priority.enum';
+import { TeamMember } from 'src/app/model/team-member';
 import { TeamService } from 'src/app/shared/services/team.service';
 
 @Component({
@@ -9,7 +11,8 @@ import { TeamService } from 'src/app/shared/services/team.service';
 })
 export class TeamListComponent implements OnInit {
 
-  team;
+  priority = Priority;
+  team:TeamMember[];
 
   constructor(public router:Router,
     public activatedRoute: ActivatedRoute,
@@ -19,7 +22,7 @@ export class TeamListComponent implements OnInit {
   ngOnInit(): void {
     this.teamService.getTeamMembers().subscribe(
       result=>{
-       this.team= result;
+       this.team= result.data.map(val => new TeamMember(val));
       }
     );
   }

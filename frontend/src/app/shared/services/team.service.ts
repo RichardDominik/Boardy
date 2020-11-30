@@ -12,11 +12,11 @@ export class TeamService {
     private http:HttpClient
   ){}
 
-  getTeamMembers():Observable<TeamMember[]>{
-    return this.http.get<TeamMember[]>('');
+  getTeamMembers():Observable<any>{
+    return this.http.get('http://notabot.duckdns.org:56124/api/users');
   }
 
-  getTeamMemberById(id:string):Observable<TeamMember>{
-    return this.http.get<TeamMember>('',{params:{id:id}} )
+  getTeamMemberById(id:string):Observable<any>{
+    return this.http.get('http://notabot.duckdns.org:56124/api/users/get/'+id)
   }
 }

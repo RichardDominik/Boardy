@@ -4,19 +4,21 @@ import { Task } from './task';
 export class TeamMember {
     id:number;
     name:string;
+    email:string;
     is_project_manager:boolean;
     rank:number;
-    avg_priority:Priority;
-    current_tasks:Task[];
-    avg_time:number
+    avg_task_priority:string;
+    avg_time:number;
+    current_tasks:Task[]
 
-    constructor(id:number, name:string, is_project_manager:boolean, rank:number, avg_priority:Priority, current_tasks:Task[], avg_time:number){
-        this.id = id;
-        this.name = name;
-        this.is_project_manager = is_project_manager;
-        this.rank = rank;
-        this.avg_priority = avg_priority;
-        this.current_tasks = current_tasks;
-        this.avg_time = avg_time;
+    constructor(data:any){
+        this.id = data.id;
+        this.name = data.name;
+        this.email = data.email;
+        this.is_project_manager = data.is_project_manager;
+        this.rank = data.rank;
+        this.avg_task_priority = data.avg_task_priority;
+        this.avg_time = data.avg_time;
+        this.current_tasks = data.assignedTasks?.map(val=> new Task(val))
     }
 }
