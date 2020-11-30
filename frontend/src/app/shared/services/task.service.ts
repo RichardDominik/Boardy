@@ -30,4 +30,8 @@ export class TaskService {
    getPage(url: string){
     return this.http.get<any>(url);
    }
+
+   filterTask(filter:any){
+     return this.http.get('http://notabot.duckdns.org:56124/api/tasks', {params: filter})
+   }
 }
