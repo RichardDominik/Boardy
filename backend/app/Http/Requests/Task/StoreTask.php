@@ -44,7 +44,7 @@ class StoreTask extends FormRequest
         $sanitized = $this->validated();
         $sanitized['deadline'] = Carbon::createFromFormat('d/m/Y H:i', $this->get('deadline'));
 
-        if ($this->has('assignee_id')) {
+        if ($this->has('assignee_id') && !is_null($this->get('assignee_id'))) {
             $sanitized['status'] = Task::TASK_STATUS_IN_PROGRESS;
         } else {
             $sanitized['status'] = Task::TASK_STATUS_FREE;
