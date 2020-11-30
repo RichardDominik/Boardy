@@ -26,6 +26,7 @@ export class PersonDetailContainerComponent implements OnInit {
       this.teamService.getTeamMemberById(params['id']).subscribe(
         result=>{
           this.person = new TeamMember(result.data);
+          console.log(result.data)
         }
       )
     });

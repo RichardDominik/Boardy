@@ -45,6 +45,7 @@ export class TaskListComponent implements OnInit {
   mapData(result:any) {
     this.tasks = result.data.map(val=> new Task(val))
     this.filteredTasks = this.tasks;
+    this.filterTasks();
 
     this.pagination.prev = result.links.prev;
     this.pagination.next = result.links.next;

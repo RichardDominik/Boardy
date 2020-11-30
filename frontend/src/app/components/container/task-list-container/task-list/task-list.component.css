@@ -1,4 +1,26 @@
 .task-table {
+  display: inline-block;
+  height: calc(100% - 30px - 124px);
+  margin-top: 28px; 
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.task-table-filter {
+  height: calc(100% - 30px - 200px);
+}
+
+thead {
+  position: absolute; 
+  margin-top: -28px; 
+  display: inline-block;
+  width: calc(100% - 200px - 62px);
+  background-color: white;
+}
+
+tbody {
+  display: inline-block;
   width: 100%;
 }
 
@@ -6,13 +28,19 @@
   text-align: center;
   border-bottom: 1px solid #dddddd;
   padding: 20px 0 20px 0;
+  display: inline-block;
+  width: 20%;
 }
 
 .task-table tr {
+  width: 100%;
+  display: inline-block;
   text-align: center;
 }
 
 .task-table th {
+  display: inline-block;
+  width: 20%;
   border-bottom: 2px solid #dddddd;
 }
 
@@ -29,8 +57,9 @@ h2 {
 
 .task-filter {
   float: left;
-  width: 100%;
+  width: 80%;
   margin: 0 40px 0 40px;
+  padding: 0 0 20px 0;
 }
 
 .hidden{
@@ -69,7 +98,6 @@ h2 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 40%;
 }
 
 .task-table thead tr th:first {
@@ -81,7 +109,7 @@ h2 {
 }
 
 .add-button {
-  margin: 10px;
+  margin: 10px 30px 10px 10px;
   background-color: #C77BFF;
   border: none;
   color: white;
@@ -93,7 +121,7 @@ h2 {
 .pagination a {
   color: black;
   float: left;
-  padding: 8px 16px;
+  padding: 2px 16px 8px 16px;
   text-decoration: none;
   font-size: x-large;
   transition: background-color .3s;
@@ -102,12 +130,10 @@ h2 {
 #task-list-container{
   display: block;
   margin: 0 30px 30px 30px;
+  height: calc(100% - 30px - 48px);
   border: 1px solid #dddddd;
   border-radius: 20px 10px 10px 20px;
   background-color: white;
-  height: calc(100% - 30px - 48px);
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .pagination-links {

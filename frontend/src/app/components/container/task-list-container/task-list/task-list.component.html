@@ -11,7 +11,7 @@
     <select id="task-filter-prio" (change)="onFilter($event.target)">
       <option value=""></option>
       <option value="LOW">LOW</option>
-      <option value="NORMAL">NORMAL</option>
+      <option value="MEDIUM">MEDIUM</option>
       <option value="HIGH">HIGH</option>
     </select>
   </div>
@@ -25,16 +25,16 @@
       <label for="task-filter-status">Status</label><br>
       <select id="task-filter-status" (change)="onFilter($event.target)">
         <option value=""></option>
-        <option value="free">FREE</option>
-        <option value="in_progress">IN PROGRESS</option>
-        <option value="to_test">TO TEST</option>
-        <option value="done">DONE</option>
+        <option value="FREE">FREE</option>
+        <option value="IN PROGRESS">IN PROGRESS</option>
+        <option value="TO TEST">TO TEST</option>
+        <option value="DONE">DONE</option>
       </select>
     </div>
     
   </div>
   
-  <table class="task-table">
+  <table [ngClass]="{'task-table': true, 'task-table-filter': showFilter === true}">
     <thead>
    <tr>
       <th>Task detail</th>
@@ -47,7 +47,7 @@
     <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
       <td><div class="task-table-title">{{task?.title}}</div></td>
       <td><div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div></td>
-      <td *ngIf="task.assignee != null; else empty">{{task?.assignee.name}}</td>
+      <td>{{task?.assignee?.name ? task?.assignee?.name : "&nbsp;"}}</td>
       <ng-template #empty>
         <td></td>
       </ng-template>
