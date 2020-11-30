@@ -1,13 +1,16 @@
 import { formatDate, registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { Priority } from 'src/app/model/enum/priority.enum';
 import { Status } from 'src/app/model/enum/status.enum';
 import { Task } from 'src/app/model/task';
+import { TeamMember } from 'src/app/model/team-member';
 import { TaskService } from 'src/app/shared/services/task.service';
 import { TeamService } from 'src/app/shared/services/team.service';
 import { User, UserService } from 'src/app/shared/services/user.service';
+
 
 @Component({
   selector: 'app-task-detail-container',
@@ -16,15 +19,18 @@ import { User, UserService } from 'src/app/shared/services/user.service';
 })
 export class TaskDetailContainerComponent implements OnInit {
 
-  task;
-  team;
+  priority = Priority;
+  task: Task;
+  team: TeamMember[];
   currentUser: User;
+  closeResult: string;
 
   constructor(
     private route:ActivatedRoute,
     private taskService:TaskService,
     private teamService:TeamService,
-    private userService:UserService
+    private userService:UserService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +50,11 @@ export class TaskDetailContainerComponent implements OnInit {
       }
     )
 
-    this.team = this.teamService.getTeamMembers();
+    this.teamService.getTeamMembers().subscribe(
+      result=>{
+        this.team = result.data.map(val=>new TeamMember(val))
+      }
+    );
   }
 
   assignToMe(){
@@ -80,4 +90,40 @@ export class TaskDetailContainerComponent implements OnInit {
       }
     )
   }
+
+  assignTo(id:number){
+    this.taskService.updateTask(this.task.id, {"assignee_id": id}).subscribe(
+      data=>{
+        this.task.assignee = this.getLocalTeamMember(id);
+        this.task.status = "in_progress";
+      },
+      error=>{
+        console.log("ERROR")
+      }
+    )
+  }
+
+  getLocalTeamMember(id:number):any{
+    for(let member of this.team){
+      if(member.id == id){
+        return {
+          id: id,
+          name: member.name,
+          email: member.email,
+          is_project_manager: member.is_project_manager,
+          created_at: null,
+          updated_at: null
+        }
+      }
+    }
+    return null
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+    });
+  }
+  
 }
