@@ -101,11 +101,11 @@ h2 {
 
 #task-list-container{
   display: block;
-  margin: 30px 30px 30px 30px;
+  margin: 0 30px 30px 30px;
   border: 1px solid #dddddd;
   border-radius: 20px 10px 10px 20px;
   background-color: white;
-  height: calc(100% - 60px);
+  height: calc(100% - 30px - 48px);
   overflow-y: auto;
   overflow-x: hidden;
 }
