@@ -16,9 +16,9 @@
         <h4>Project manager</h4>
         <span>{{task?.creator.name}}</span>
     </div>
-    <div *ngIf="task?.client != null" class="people-detail">
+    <div *ngIf="task?.client_id != null" class="people-detail">
         <h4>Client</h4>
-        <span>{{task?.client}}</span>
+        <span>{{task?.client_id}}</span>
     </div>
     <div class="people-detail">
         <h4>Assignee</h4>

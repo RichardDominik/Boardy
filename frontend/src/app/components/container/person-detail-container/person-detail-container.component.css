@@ -21,6 +21,18 @@
     font-weight: bold;
 }
 
+.task-table-title {
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task-table-item:hover{
+    background-color: #f7f8f9;
+    cursor: pointer;
+  }
+
 .person-table-status {
     display: inline-block;
     padding: 0 7px;
@@ -48,7 +60,7 @@
 h4 {
     font-size: large;
     font-weight: bold;
-    margin: 5px 10px 5px 10px;
+    margin: 5px 10px 10px 10px;
 }
 
 .task-table {

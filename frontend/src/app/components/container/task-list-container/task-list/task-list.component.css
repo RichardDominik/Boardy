@@ -26,7 +26,6 @@ tbody {
 
 .task-table td {
   text-align: center;
-  border-bottom: 1px solid #dddddd;
   padding: 20px 0 20px 0;
   display: inline-block;
   width: 20%;
@@ -38,10 +37,17 @@ tbody {
   text-align: center;
 }
 
+.task-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.task-table thead tr {
+  border-bottom: 2px solid #dddddd;
+}
+
 .task-table th {
   display: inline-block;
   width: 20%;
-  border-bottom: 2px solid #dddddd;
 }
 
 h2 {

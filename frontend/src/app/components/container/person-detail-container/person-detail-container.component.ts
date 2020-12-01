@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Priority } from 'src/app/model/enum/priority.enum';
 import { Status } from 'src/app/model/enum/status.enum';
 import { TeamMember } from 'src/app/model/team-member';
@@ -19,7 +19,8 @@ export class PersonDetailContainerComponent implements OnInit {
 
   constructor(private route:ActivatedRoute,
     private taskService:TaskService,
-    private teamService:TeamService,) { }
+    private teamService:TeamService,
+    private router:Router) { }
 
   ngOnInit(): void {
     let sub = this.route.queryParams.subscribe(params => {
@@ -31,6 +32,10 @@ export class PersonDetailContainerComponent implements OnInit {
       )
     });
     sub.unsubscribe();
+  }
+
+  showTaskDetail(id:string){
+    this.router.navigate(['task-list', 'task-detail'],  { queryParams: { id: id }});
   }
 
 }

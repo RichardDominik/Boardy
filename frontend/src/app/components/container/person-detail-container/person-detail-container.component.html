@@ -30,13 +30,13 @@
             <tr>
                 <th>Task detail</th>
                 <th>Status</th>
-                <th>Deadline/Estimate</th>
+                <th>Estimate</th>
                 <th>Priority</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let task of person?.current_tasks" class="task-table-item">
-                <td>{{task?.title}}</td>
+            <tr *ngFor="let task of person?.current_tasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
+                <td><div class="task-table-title">{{task?.title}}</div></td>
                 <td>
                     <div class="task-table-status {{task.status}}">{{status[task?.status]}}</div>
                 </td>

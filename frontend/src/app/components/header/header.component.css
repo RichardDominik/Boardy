@@ -28,3 +28,10 @@
 #signout-container:hover{
     cursor: pointer;
 }
+
+#userName{
+    display: inline;
+    float: right;
+    margin-top: 12px;
+    margin-right: 12px;
+}

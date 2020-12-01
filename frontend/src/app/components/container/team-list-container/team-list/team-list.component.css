@@ -22,7 +22,6 @@ tbody {
 
 .team-table td {
     text-align: center;
-    border-bottom: 1px solid #dddddd;
     padding: 20px 0 20px 0;
     display: inline-block;
     width: 25%;
@@ -34,10 +33,18 @@ tbody {
     text-align: center;
 }
 
+.team-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.team-table thead tr {
+    border-bottom: 2px solid #dddddd;
+}
+
 .team-table th {
     display: inline-block;
     width: 25%;
-    border-bottom: 2px solid #dddddd;
+    
 }
 
 h2 {

@@ -47,6 +47,7 @@
                 <th>Priority</th>
             </tr>
         </thead>
+        <tbody>
         <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
             <td>
                 <div class="task-table-title">{{task?.title}}</div>
@@ -63,6 +64,7 @@
                 <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
             </td>
         </tr>
+        </tbody>
     </table>
     <div class="pagination">
         <div class="pagination-links">
