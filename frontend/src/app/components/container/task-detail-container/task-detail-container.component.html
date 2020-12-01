@@ -1,10 +1,13 @@
 <div id="task-detail-header">
     <h1 id="task-title">{{task?.title}}</h1>
-    <div *ngIf="task?.assignee == null && task?.status == 'free'" id="button-container">
+    <div *ngIf="task?.creator.id != currentUser?.id && task?.assignee == null && task?.status == 'free'" class="button-container">
         <button id="assign-button" class="btn btn-block btn-primary" (click)="assignToMe()">Assign to me</button>
     </div>
-    <div *ngIf="task?.assignee != null && task?.assignee.id == currentUser?.id" id="button-container">
+    <div *ngIf="task?.creator.id != currentUser?.id && task?.assignee != null && task?.assignee.id == currentUser?.id" class="button-container">
         <button class="btn btn-block btn-primary unassign" (click)="unasign()">Unassign</button>
+    </div>
+    <div *ngIf="task?.creator.id == currentUser?.id" class="button-container">
+        <button id="assign-button" class="btn btn-block btn-primary" (click)="open(mymodal)">Assign to</button>
     </div>
 </div>
 <app-task-overview *ngIf="task" [task]="task" [user]="currentUser"></app-task-overview>
@@ -25,3 +28,34 @@
         </ng-template>
     </div>
 </div>
+<ng-template #mymodal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Choose a person</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <table class="team-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Avg rank</th>
+                    <th>Avg priority</th>
+                    <th>Avg time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let person of team" class="team-table-item" (click)="assignTo(person.id); modal.dismiss('Cross click')">
+                    <td>{{person.name}}</td>
+                    <td>{{person.rank}}</td>
+                    <td>
+                        <div class="task-table-status {{person.avg_task_priority}}">{{priority[person.avg_task_priority]}}</div>
+                    </td>
+                    <td>{{person.avg_time}}</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+</ng-template>

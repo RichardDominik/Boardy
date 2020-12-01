@@ -4,15 +4,15 @@
     width: 100%;
 }
 
-#asign-button{
+#asign-button {
     float: right;
 }
 
-#button-container{
+.button-container {
     margin-left: auto;
 }
 
-.people-container{
+.people-container {
     width: 40%;
     background-color: white;
     border: 1px solid transparent;
@@ -21,17 +21,85 @@
     padding: 10px;
 }
 
-h4{
+h4 {
     font-size: large;
     font-weight: bold;
 }
 
 .people-detail {
-    margin:15px;
+    margin: 15px;
 }
 
 .unassign {
     background-color: goldenrod;
     outline: none;
     border: 1px solid transparent;
+}
+
+.team-table {
+    width: 100%;
+    padding-top: 20px;
+}
+
+.team-table td {
+    text-align: center;
+    border-bottom: 1px solid #dddddd;
+    padding: 20px 0 20px 0;
+}
+
+.team-table tr {
+    text-align: center;
+}
+
+.team-table th {
+    border-bottom: 2px solid #dddddd;
+}
+
+h2 {
+    margin: 20px 40px 20px 40px;
+    float: left;
+}
+
+.task-table-status {
+    display: inline-block;
+    padding: 0 7px;
+    border-radius: 10px;
+    color: white;
+    text-transform: uppercase;
+}
+
+#team-list-container {
+    display: block;
+    margin: 30px 30px 30px 30px;
+    border: 1px solid #dddddd;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.team-table-item:hover {
+    background-color: #f7f8f9;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.team-table thead td {
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+}
+
+thead,
+tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+tbody {
+    display: block;
+    overflow-y: auto;
+    table-layout: fixed;
+    max-height: 300px;
 }

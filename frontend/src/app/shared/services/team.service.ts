@@ -19,4 +19,8 @@ export class TeamService {
   getTeamMemberById(id:string):Observable<any>{
     return this.http.get('http://notabot.duckdns.org:56124/api/users/get/'+id)
   }
+
+  getPage(url: string){
+    return this.http.get<any>(url);
+   }
 }

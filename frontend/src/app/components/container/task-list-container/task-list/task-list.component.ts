@@ -1,9 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { stringify } from 'querystring';
 import { Priority } from 'src/app/model/enum/priority.enum';
 import { Status } from 'src/app/model/enum/status.enum';
 import { Task } from 'src/app/model/task';
+import { TeamMember } from 'src/app/model/team-member';
 import { TaskService } from 'src/app/shared/services/task.service';
+import { TeamService } from 'src/app/shared/services/team.service';
 
 @Component({
   selector: 'app-task-list',
@@ -19,6 +22,7 @@ export class TaskListComponent implements OnInit {
     next: ""
   }
   
+  team:TeamMember[];
   tasks:Task[];
   filteredTasks:Task[];
   showFilter = false;
@@ -27,11 +31,13 @@ export class TaskListComponent implements OnInit {
     status: "",
     assignee: ""
   };
+  selectedObject: any;
 
   constructor(
     public router:Router,
     public activatedRoute: ActivatedRoute,
-    public taskService: TaskService
+    public taskService: TaskService,
+    public teamService: TeamService
   ) {}
 
   ngOnInit(): void {
@@ -40,12 +46,17 @@ export class TaskListComponent implements OnInit {
        this.mapData(result)
       }
     );
+
+    this.teamService.getTeamMembers().subscribe(
+      result => {
+        this.team = result.data.map(val => new TeamMember(val));
+      }
+    )
   }
 
   mapData(result:any) {
     this.tasks = result.data.map(val=> new Task(val))
     this.filteredTasks = this.tasks;
-    this.filterTasks();
 
     this.pagination.prev = result.links.prev;
     this.pagination.next = result.links.next;
@@ -60,31 +71,45 @@ export class TaskListComponent implements OnInit {
   }
 
   onFilter(target) {
+    let wasChange = false;
     switch(target.id) {
       case "task-filter-prio":
+        if(this.filter.prio != target.value){
+          wasChange = true;
+        }
         this.filter.prio = target.value;
         break;
       case "task-filter-status":
+        if(this.filter.status != target.value){
+          wasChange = true;
+        }
         this.filter.status = target.value;
         break;
       case "task-filter-assignee":
+        if(this.filter.assignee != target.value){
+          wasChange = true;
+        }
         this.filter.assignee = target.value;
     }
-    this.filterTasks();
+    if(wasChange){
+      this.filterTasks();
+    }
   }
 
   filterTasks() {
-    let newTasks = this.tasks;
-    if (this.filter.prio){
-      newTasks = newTasks.filter(task => Priority[task.priority] == this.filter.prio);
+    
+    let filter = {
+      "priority[]": (this.filter.prio &&  this.filter.prio!="" ? this.filter.prio:undefined),
+      "status[]": (this.filter.status &&  this.filter.status!="" ? this.filter.status:undefined),
+      "assignee[]": (this.filter.assignee &&  this.filter.assignee!="" ? this.filter.assignee:undefined),
+
     }
-    if (this.filter.status){
-      newTasks = newTasks.filter(task => Status[task.status] == this.filter.status);
-    }
-    if (this.filter.assignee){
-      newTasks = newTasks.filter(task => task.assignee.id.toString() == this.filter.assignee);
-    }
-    this.filteredTasks = newTasks;
+
+    this.taskService.filterTask(JSON.parse(JSON.stringify(filter))).subscribe(
+      result=>{
+        this.mapData(result)
+      }
+    )
   }
 
   showTaskDetail(id:string){

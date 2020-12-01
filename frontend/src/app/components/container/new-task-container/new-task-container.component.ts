@@ -37,7 +37,13 @@ export class NewTaskContainerComponent implements OnInit {
 
   choosePriority(priority: string){
     this.priority = priority;
-    this.taskForm.reset({priority:priority})
+    this.taskForm.reset(
+      {
+        priority:priority,
+        title: this.taskForm.value.title,
+        estimate: this.taskForm.value.estimate,
+        deadline: this.taskForm.value.deadline
+      })
   }
 
   createNewTask(){
