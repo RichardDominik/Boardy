@@ -22,7 +22,7 @@
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-    color: #bb6bd9;
+    color: #b44bff;
 }
 
 /* Position and style the close button (top right corner) */
@@ -48,7 +48,7 @@
 
 .active{
     background-color: #f7f8f9;
-    color: #bb6bd9 !important;
+    color: #b44bff !important;
 }
 
 .active a:active {
