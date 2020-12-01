@@ -6,6 +6,11 @@
 }
 
 article {
-  padding-top: 40vh;
+  padding-top: 35vh;
   font-size: 2em;
+}
+
+span {
+  font-size: large;
+  color: gray;
 }

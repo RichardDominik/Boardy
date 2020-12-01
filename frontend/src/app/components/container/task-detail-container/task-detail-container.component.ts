@@ -91,11 +91,35 @@ export class TaskDetailContainerComponent implements OnInit {
     )
   }
 
+  totest(){
+    this.taskService.updateTask(this.task.id, {"status":"to_test"}).subscribe(
+      data=>{
+        this.task.status = "to_test";
+      },
+      error=>{
+        console.log("ERROR")
+      }
+    )
+  }
+
+  done(){
+    this.taskService.updateTask(this.task.id, {"status":"done"}).subscribe(
+      data=>{
+        this.task.status = "done";
+      },
+      error=>{
+        console.log("ERROR")
+      }
+    )
+  }
+
   assignTo(id:number){
     this.taskService.updateTask(this.task.id, {"assignee_id": id}).subscribe(
       data=>{
         this.task.assignee = this.getLocalTeamMember(id);
-        this.task.status = "in_progress";
+        if (this.task.status = "free") {
+          this.task.status = "in_progress";
+        }
       },
       error=>{
         console.log("ERROR")

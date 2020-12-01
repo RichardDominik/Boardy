@@ -8,7 +8,7 @@ export class TeamMember {
     is_project_manager:boolean;
     rank:number;
     avg_task_priority:string;
-    avg_time:number;
+    avg_time:string;
     current_tasks:Task[]
 
     constructor(data:any){
@@ -18,7 +18,8 @@ export class TeamMember {
         this.is_project_manager = data.is_project_manager;
         this.rank = data.rank;
         this.avg_task_priority = data.avg_task_priority;
-        this.avg_time = data.avg_time;
+        let time = data.avg_time?.split(" ");
+        this.avg_time = data.avg_time ? time[0]+time[1]+" "+time[2]+time[3] : data.avg_time;
         this.current_tasks = data.assignedTasks?.map(val=> new Task(val))
     }
 }

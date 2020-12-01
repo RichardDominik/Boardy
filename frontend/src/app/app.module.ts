@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
+import { FooterComponent } from './components/footer/footer.component';
 
 registerLocaleData(localeSk, 'sk-SK');
 
@@ -53,7 +54,8 @@ registerLocaleData(localeSk, 'sk-SK');
     CurrentTaskListItemComponent,
     OverviewContainerComponent,
     TeamListContainerComponent,
-    TeamListComponent
+    TeamListComponent,
+    FooterComponent
     ],
   imports: [
     BrowserModule,

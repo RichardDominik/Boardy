@@ -1,0 +1,12 @@
+footer {
+  position:absolute;
+  bottom: 2px;
+  right: 50px;
+  font-size: 0.9em;
+}
+
+span {
+  color: #b44bff;
+  font-weight: bold;
+  
+}

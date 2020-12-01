@@ -4,10 +4,14 @@
         <button id="assign-button" class="btn btn-block btn-primary" (click)="assignToMe()">Assign to me</button>
     </div>
     <div *ngIf="task?.creator.id != currentUser?.id && task?.assignee != null && task?.assignee.id == currentUser?.id" class="button-container">
-        <button class="btn btn-block btn-primary unassign" (click)="unasign()">Unassign</button>
+        <button class="btn btn-primary unassign" (click)="unasign()">Unassign</button>
+        <button *ngIf="task?.status == 'in_progress'"class="btn btn-primary totest" (click)="totest()">To test</button>
+        <button *ngIf="task?.status == 'to_test'"class="btn btn-primary done" (click)="done()">Done</button>
     </div>
     <div *ngIf="task?.creator.id == currentUser?.id" class="button-container">
-        <button id="assign-button" class="btn btn-block btn-primary" (click)="open(mymodal)">Assign to</button>
+        <button id="assign-button" class="btn btn-primary" (click)="open(mymodal)">Assign to</button>
+        <button *ngIf="task?.assignee != null && task?.assignee.id == currentUser?.id && task?.status == 'in_progress'"class="btn btn-primary totest" (click)="totest()">To test</button>
+        <button *ngIf="task?.assignee != null && task?.assignee.id == currentUser?.id && task?.status == 'to_test'"class="btn btn-primary done" (click)="done()">Done</button>
     </div>
 </div>
 <app-task-overview *ngIf="task" [task]="task" [user]="currentUser"></app-task-overview>
