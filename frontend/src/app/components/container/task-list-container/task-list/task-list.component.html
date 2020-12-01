@@ -8,17 +8,17 @@
     <div [ngClass]="{'task-filter': true, 'hidden': showFilter === false}">
         <div class="task-filter-option">
             <label for="task-filter-prio">Priority</label><br>
-            <select id="task-filter-prio" (change)="onFilter($event.target)" [(ngModel)]="selectedObject">
-      <option value=""></option>
-      <option value="low">LOW</option>
-      <option value="medium">MEDIUM</option>
-      <option value="high">HIGH</option>
-    </select>
+            <select id="task-filter-prio" (change)="onFilter($event.target)">
+                <option value="">ALL</option>
+                <option value="low">LOW</option>
+                <option value="medium">MEDIUM</option>
+                <option value="high">HIGH</option>
+            </select>
         </div>
         <div class="task-filter-option">
             <label for="task-filter-assignee">Assignee</label><br>
             <select id="task-filter-assignee" (change)="onFilter($event.target)">
-              <option value=""></option>
+              <option value="">ALL</option>
               <option *ngFor='let member of team' [value]="member.id">
                 {{member.name}}
               </option>
@@ -27,7 +27,7 @@
         <div class="task-filter-option">
             <label for="task-filter-status">Status</label><br>
             <select id="task-filter-status" (change)="onFilter($event.target)">
-        <option value=""></option>
+        <option value="">ALL</option>
         <option value="free">FREE</option>
         <option value="in_progress">IN PROGRESS</option>
         <option value="to_test">TO TEST</option>
@@ -59,7 +59,7 @@
             <ng-template #empty>
                 <td></td>
             </ng-template>
-            <td>{{task.estimate}}</td>
+            <td>{{task.estimate}} hours</td>
             <td>
                 <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
             </td>
@@ -68,8 +68,8 @@
     </table>
     <div class="pagination">
         <div class="pagination-links">
-            <a *ngIf="pagination.prev != null" (click)="prevPage()">&laquo;</a>
-            <a *ngIf="pagination.next != null" (click)="nextPage()">&raquo;</a>
+            <a *ngIf="pagination.prev != null" (click)="prevPage()"><span>Prev</span> &laquo;</a>
+            <a *ngIf="pagination.next != null" (click)="nextPage()">&raquo; <span>Next</span></a>
         </div>
     </div>
 </div>

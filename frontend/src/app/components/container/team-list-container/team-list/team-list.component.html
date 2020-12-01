@@ -25,8 +25,8 @@
     </table>
     <div class="pagination">
         <div class="pagination-links">
-            <a *ngIf="pagination.prev != null" (click)="prevPage()">&laquo;</a>
-            <a *ngIf="pagination.next != null" (click)="nextPage()">&raquo;</a>
+            <a *ngIf="pagination.prev != null" (click)="prevPage()"><span>Prev</span> &laquo;</a>
+            <a *ngIf="pagination.next != null" (click)="nextPage()">&raquo; <span>Next</span> </a>
         </div>
     </div>
 </div>

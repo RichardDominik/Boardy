@@ -16,6 +16,10 @@ export class TeamService {
     return this.http.get('http://notabot.duckdns.org:56124/api/users');
   }
 
+  getAllTeamMembers():Observable<any>{
+    return this.http.get('http://notabot.duckdns.org:56124/api/users/all');
+  }
+
   getTeamMemberById(id:string):Observable<any>{
     return this.http.get('http://notabot.duckdns.org:56124/api/users/get/'+id)
   }

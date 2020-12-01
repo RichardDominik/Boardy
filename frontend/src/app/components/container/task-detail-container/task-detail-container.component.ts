@@ -50,7 +50,7 @@ export class TaskDetailContainerComponent implements OnInit {
       }
     )
 
-    this.teamService.getTeamMembers().subscribe(
+    this.teamService.getAllTeamMembers().subscribe(
       result=>{
         this.team = result.data.map(val=>new TeamMember(val))
       }

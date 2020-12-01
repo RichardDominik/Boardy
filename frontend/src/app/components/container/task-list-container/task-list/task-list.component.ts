@@ -31,7 +31,6 @@ export class TaskListComponent implements OnInit {
     status: "",
     assignee: ""
   };
-  selectedObject: any;
 
   constructor(
     public router:Router,
@@ -47,7 +46,7 @@ export class TaskListComponent implements OnInit {
       }
     );
 
-    this.teamService.getTeamMembers().subscribe(
+    this.teamService.getAllTeamMembers().subscribe(
       result => {
         this.team = result.data.map(val => new TeamMember(val));
       }
@@ -56,10 +55,13 @@ export class TaskListComponent implements OnInit {
 
   mapData(result:any) {
     this.tasks = result.data.map(val=> new Task(val))
-    this.filteredTasks = this.tasks;
-
-    this.pagination.prev = result.links.prev;
-    this.pagination.next = result.links.next;
+    this.filteredTasks = this.tasks;   
+    
+    let filter = (this.filter.prio? "&priority[]="+this.filter.prio : "")+
+      (this.filter.status? "&status[]="+this.filter.status : "")+
+      (this.filter.assignee? "&assignee[]="+this.filter.assignee : "");
+    this.pagination.prev = result.links.prev ? result.links.prev+filter : result.links.prev;
+    this.pagination.next = result.links.next ? result.links.next+filter : result.links.next;
   }
 
   showHideFilter() {

@@ -55,6 +55,7 @@
     color: white;
     text-transform: uppercase;
     margin: 10px;
+    text-align: center;
 }
 
 .task-table-status:hover {

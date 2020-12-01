@@ -35,3 +35,7 @@
     margin-top: 12px;
     margin-right: 12px;
 }
+
+b:hover {
+    cursor: pointer;
+}

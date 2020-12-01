@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthStateService } from 'src/app/shared/auth-state.service';
 import { AuthService } from 'src/app/shared/auth.service';
 import { TokenService } from 'src/app/shared/token.service';
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
   constructor(
     public auth:AuthStateService,
     public token:TokenService,
-    public userService:UserService
+    public userService:UserService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,10 @@ export class HeaderComponent implements OnInit {
        }
       }
     );
+  }
+
+  goHome() {
+    this.router.navigate(['dashboard']);
   }
 
   doLogout(){

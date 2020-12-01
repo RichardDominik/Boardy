@@ -83,10 +83,14 @@ h2 {
 }
 
 .pagination a {
-    color: black;
+    color: #bb6bd9;
     float: left;
     padding: 2px 16px 8px 16px;
     text-decoration: none;
     font-size: x-large;
     transition: background-color .3s;
-}
+  }
+  
+  .pagination a span {
+    font-size: large;
+  }

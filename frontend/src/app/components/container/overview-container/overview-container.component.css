@@ -1,4 +1,11 @@
 #container{
   background-color: #F2EDF3;
   height: calc(100vh - 50px); /*50px = header*/
+  text-align: center;
+  
+}
+
+article {
+  padding-top: 40vh;
+  font-size: 2em;
 }
