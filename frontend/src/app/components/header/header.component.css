@@ -1,16 +1,16 @@
 #title {
-    color: #b44bff;
+    color: #7215d8;
     font-size: xx-large;
     padding: 10px 10px 10px 30px;
 }
 
-#header-content{
+#header-content {
     height: 50px;
     display: inline-block;
     width: 100%;
 }
 
-.fa-power-off{
+.fa-power-off {
     color: grey;
 }
 
@@ -18,18 +18,18 @@
     font-size: 30px;
 }
 
-#signout-container{
+#signout-container {
     display: inline;
     float: right;
     margin-top: 10px;
     margin-right: 10px;
 }
 
-#signout-container:hover{
+#signout-container:hover {
     cursor: pointer;
 }
 
-#userName{
+#userName {
     display: inline;
     float: right;
     margin-top: 12px;

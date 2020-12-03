@@ -1,78 +1,91 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
+
+html,
+body {
     font-family: 'Mulish';
     margin: 0;
 }
 
+
 /* we can wrap all container components into div and specify these styles in global style file */
-#container{
+
+#container {
     width: calc(100% - 200px);
     float: left;
     background-color: #F2EDF3;
 }
 
-app-navigation{
+app-navigation {
     height: 100%;
     width: 200px;
     background-color: #1C1C1C;
     float: left;
 }
 
+
 /* Scrollbar */
-  /* width */
-  ::-webkit-scrollbar {
+
+
+/* width */
+
+ ::-webkit-scrollbar {
     width: 10px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+
+/* Track */
+
+ ::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+
+/* Handle */
+
+ ::-webkit-scrollbar-thumb {
     background: #dddddd;
     border-radius: 10px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: #818181;
-  }
+}
 
-  
+
+/* Handle on hover */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: #818181;
+}
+
 .in_progress {
-    border: 0px solid orange;
-    background-color: orange;
-  }
-  
-  .done {
+    border: 0px solid #f6610c;
+    background-color: #f6610c;
+}
+
+.done {
     border: 0px solid blue;
     background-color: blue;
-  }
-  
-  .free {
+}
+
+.free {
     border: 0px solid green;
     background-color: green;
-  }
-  
-  .to_test {
-    border: 0px solid rgb(104, 211, 214);
-    background-color: rgb(104, 211, 214);
-  }
-  
-  .high {
-    border: 0px solid red;
-    background-color: red;
-  }
-  
-  .low {
+}
+
+.to_test {
+    border: 0px solid #334151;
+    background-color: #334151;
+}
+
+.high {
+    border: 0px solid #a40c0a;
+    background-color: #a40c0a;
+}
+
+.low {
     border: 0px solid green;
     background-color: green;
-  }
-  
-  .medium {
-    border: 0px solid gold;
-    background-color: gold;
-  }
+}
+
+.medium {
+    border: 0px solid #f6610c;
+    background-color: #f6610c;
+}
