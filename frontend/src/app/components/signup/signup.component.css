@@ -1,13 +1,12 @@
-#auth-wrapper{
-    margin:auto;
+#auth-wrapper {
+    margin: auto;
     width: 30%;
     /* background-color: #F2EDF3; */
     padding: 30px;
     height: 50vh;
-
 }
 
-form{
+form {
     display: grid;
     justify-content: center;
 }
@@ -20,22 +19,22 @@ input {
 }
 
 #title {
-    margin:auto;
-    color: #C77BFF;
+    margin: auto;
+    color: #7215d8;
     font-size: xx-large;
     margin-bottom: 30px;
 }
 
-#submit-button{
+#submit-button {
     margin-top: 50px;
-    background-color: #C77BFF;
+    background-color: #7215d8;
     border: none;
 }
 
-a{
+a {
     margin: auto;
     font-size: smaller;
-    color: grey;
+    color: darkslategrey;
 }
 
 div .form-item {
