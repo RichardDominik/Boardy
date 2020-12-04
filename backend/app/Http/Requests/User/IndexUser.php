@@ -26,7 +26,7 @@ class IndexUser extends FormRequest
     public function rules(): array
     {
         return [
-            'orderBy' => ['in:id', 'nullable'],
+            'orderBy' => ['in:id,name', 'nullable'],
             'orderDirection' => ['in:asc,desc', 'nullable'],
             'page' => ['integer', 'nullable'],
             'perPage' => ['integer', 'nullable'],

@@ -12,7 +12,18 @@ use App\User;
 class UserController extends Controller
 {
     public function index(IndexUser $request) : UserCollection {
-        return new UserCollection(User::paginate());
+        $orderByColumn = 'id';
+        $orderDirection = 'asc';
+
+        if($request->has('orderBy')) {
+            $orderByColumn = $request->get('orderBy');
+        }
+
+        if($request->has('orderDirection')) {
+            $orderDirection = $request->get('orderDirection');
+        }
+
+        return new UserCollection(User::orderBy($orderByColumn, $orderDirection)->paginate());
     }
 
     public function all(AllUser $request) : UserCollection {
