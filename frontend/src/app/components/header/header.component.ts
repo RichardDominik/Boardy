@@ -13,6 +13,7 @@ import { UserService } from 'src/app/shared/services/user.service';
 export class HeaderComponent implements OnInit {
 
   userName:string;
+  openMenu = false;
 
   constructor(
     public auth:AuthStateService,
@@ -29,6 +30,7 @@ export class HeaderComponent implements OnInit {
        }
       }
     );
+    document.getElementsByTagName("body")[0].classList.remove("openMenu");
   }
 
   goHome() {
@@ -38,5 +40,10 @@ export class HeaderComponent implements OnInit {
   doLogout(){
     this.auth.setAuthState(false);
     this.token.removeToken();
+  }
+
+  showHideMenu() {
+    this.openMenu ? this.openMenu=false : this.openMenu=true;
+    document.getElementsByTagName("body")[0].classList.toggle("openMenu");
   }
 }

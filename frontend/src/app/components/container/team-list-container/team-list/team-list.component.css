@@ -94,3 +94,16 @@ h2 {
   .pagination a span {
     font-size: large;
   }
+
+  @media screen and (max-width: 1024px) {
+
+    thead {
+        width: calc(100% - 32px) !important;
+    }
+
+    #team-list-container {
+        height: calc(100% - 45px);
+        margin: 15px 15px 30px 15px;
+    }
+
+}

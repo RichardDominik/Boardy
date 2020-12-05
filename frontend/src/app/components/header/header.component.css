@@ -1,7 +1,7 @@
 #title {
     color: #7215d8;
     font-size: xx-large;
-    padding: 10px 10px 10px 30px;
+    padding: 5px 5px 5px 30px;
 }
 
 #header-content {
@@ -38,4 +38,39 @@
 
 b:hover {
     cursor: pointer;
+}
+
+.menu {
+    float:left;
+    cursor: pointer;
+    padding: 5px 5px 5px 12px;
+}
+
+.menu:hover .bar1, .menu:hover .bar2, .menu:hover .bar3 {
+    background-color: #7215d8;
+}
+  
+.bar1, .bar2, .bar3 {
+    width: 30px;
+    height: 5px;
+    background-color: #4d4c4c;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+  
+  /* Rotate first bar */
+.open .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+    transform: rotate(-45deg) translate(-9px, 6px) ;
+}
+  
+  /* Fade out the second bar */
+.open .bar2 {
+    opacity: 0;
+}
+  
+  /* Rotate last bar */
+.open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+    transform: rotate(45deg) translate(-8px, -8px) ;
 }

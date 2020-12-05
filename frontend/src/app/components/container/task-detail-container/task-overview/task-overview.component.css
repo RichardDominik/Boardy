@@ -38,3 +38,9 @@
 .description-area {
     width: 80%;
 }
+
+@media screen and (max-width: 1024px) {
+    .overview {
+        margin: 0px 15px;
+    }
+}

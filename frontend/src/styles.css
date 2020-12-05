@@ -30,6 +30,7 @@ app-navigation {
 
  ::-webkit-scrollbar {
     width: 10px;
+    height: 10px;
 }
 
 
@@ -88,4 +89,35 @@ app-navigation {
 .medium {
     border: 0px solid #f6610c;
     background-color: #f6610c;
+}
+
+.menu {
+    display: none;
+}
+
+/* Mobile/Tablet resolutions */
+
+@media screen and (max-width: 1024px) {
+    app-navigation {
+        display: none;
+    }
+
+    .openMenu app-navigation {
+        display: block;
+        position: absolute;
+        top: 50px;
+        left: 0;
+        height: calc(100% - 50px);
+        z-index: 10;
+    }
+
+    .menu {
+        display: inline-block;
+    }
+
+    #container {
+        width: 100%;
+        overflow-y: auto;
+    }
+
 }

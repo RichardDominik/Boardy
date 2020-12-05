@@ -1,4 +1,9 @@
 <div id="header-content">
+    <div class="menu {{openMenu? 'open':''}}" (click)=showHideMenu()>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
 <span id="title"><b (click)="goHome()">Boardy</b></span>
 <div id="signout-container">
     <a routerLink="/sign-in"(click)="doLogout()"><i class="fa fa-power-off"></i></a>
