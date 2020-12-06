@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './../../shared/auth.service';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signup',
@@ -16,7 +17,8 @@ export class SignupComponent implements OnInit {
   constructor(
     public router: Router,
     public fb: FormBuilder,
-    public authService: AuthService
+    public authService: AuthService,
+    private titleService: Title
   ) {
     this.registerForm = this.fb.group({
       name: [''],
@@ -26,7 +28,9 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.titleService.setTitle("New account")
+   }
 
   onSubmit() {
     this.authService.register(this.registerForm.value).subscribe(

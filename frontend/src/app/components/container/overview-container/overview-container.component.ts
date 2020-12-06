@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-overview-container',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OverviewContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public titleService: Title
+  ) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle("Overview")
   }
 
 }

@@ -39,7 +39,7 @@
 
 .add-button {
     margin: 10px 50px 30px 0px;
-    background-color: #C77BFF;
+    background-color: #7215d8;
     border: none;
     color: white;
     border: 1px solid transparent;
@@ -89,27 +89,20 @@
     .new-task-container {
         margin: 15px 30px 15px 15px;
         width: calc(100% - 30px);
-        
     }
-
     .field {
         margin: 20px;
     }
-
     .other-fields {
         display: block;
     }
-
     .estimate {
         margin-top: 0;
     }
-
     .mat-form-field {
         width: calc(100%);
     }
-
     .task-priority-values {
         display: block;
     }
-
 }

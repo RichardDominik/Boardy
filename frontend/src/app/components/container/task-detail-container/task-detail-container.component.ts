@@ -1,5 +1,6 @@
 import { formatDate, registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
@@ -30,7 +31,8 @@ export class TaskDetailContainerComponent implements OnInit {
     private taskService:TaskService,
     private teamService:TeamService,
     private userService:UserService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private titleService: Title
   ) { }
 
   ngOnInit(): void {
@@ -39,6 +41,7 @@ export class TaskDetailContainerComponent implements OnInit {
       this.taskService.getTaskById(params['id']).subscribe(
         result=>{
           this.task = new Task(result.data);
+          this.titleService.setTitle(this.task.title)
         }
       );
     });

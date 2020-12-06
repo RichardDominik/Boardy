@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { stringify } from 'querystring';
 import { Priority } from 'src/app/model/enum/priority.enum';
@@ -36,7 +37,8 @@ export class TaskListComponent implements OnInit {
     public router:Router,
     public activatedRoute: ActivatedRoute,
     public taskService: TaskService,
-    public teamService: TeamService
+    public teamService: TeamService,
+    public titleService: Title
   ) {}
 
   ngOnInit(): void {
@@ -51,6 +53,7 @@ export class TaskListComponent implements OnInit {
         this.team = result.data.map(val => new TeamMember(val));
       }
     )
+    this.titleService.setTitle("Task list")
   }
 
   mapData(result:any) {
