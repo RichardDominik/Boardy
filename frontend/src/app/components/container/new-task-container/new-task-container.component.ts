@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { stringify } from 'querystring';
 import { Priority } from 'src/app/model/enum/priority.enum';
@@ -23,7 +24,8 @@ export class NewTaskContainerComponent implements OnInit {
     public fb: FormBuilder,
     private taskService: TaskService,
     private router: Router,
-    public datepipe: DatePipe
+    public datepipe: DatePipe,
+    public titleService: Title
     ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class NewTaskContainerComponent implements OnInit {
       estimate: [],
       deadline: [],
     })
+    this.titleService.setTitle("New task")
   }
 
   choosePriority(priority: string){

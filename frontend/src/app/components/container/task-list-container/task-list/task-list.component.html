@@ -40,7 +40,7 @@
     <table [ngClass]="{'task-table': true, 'task-table-filter': showFilter === true}">
         <thead>
             <tr>
-                <th>Title</th>
+                <th>Title></th>
                 <th>Status</th>
                 <th>Assignee</th>
                 <th>Deadline/Estimate</th>
@@ -48,22 +48,22 @@
             </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
-            <td>
-                <div class="task-table-title">{{task?.title}}</div>
-            </td>
-            <td>
-                <div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div>
-            </td>
-            <td>{{task?.assignee?.name ? task?.assignee?.name : "&nbsp;"}}</td>
-            <ng-template #empty>
-                <td></td>
-            </ng-template>
-            <td>{{task.estimate}} hours</td>
-            <td>
-                <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
-            </td>
-        </tr>
+            <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
+                <td>
+                    <div class="task-table-title">{{task?.title}}</div>
+                </td>
+                <td>
+                    <div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div>
+                </td>
+                <td>{{task?.assignee?.name ? task?.assignee?.name : "&nbsp;"}}</td>
+                <ng-template #empty>
+                    <td></td>
+                </ng-template>
+                <td>{{task.estimate}} hours</td>
+                <td>
+                    <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
+                </td>
+            </tr>
         </tbody>
     </table>
     <div class="pagination">

@@ -4,6 +4,7 @@ import { AuthService } from './../../shared/auth.service';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { TokenService } from '../../shared/token.service';
 import { AuthStateService } from '../../shared/auth-state.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-signin',
@@ -21,6 +22,7 @@ export class SigninComponent implements OnInit {
     public authService: AuthService,
     private token: TokenService,
     private authState: AuthStateService,
+    private titleService: Title
   ) {
     this.loginForm = this.fb.group({
       email: [],
@@ -28,7 +30,9 @@ export class SigninComponent implements OnInit {
     })
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.titleService.setTitle("Boardy")
+   }
 
   onSubmit() {
       this.authService.signin(this.loginForm.value).subscribe(
@@ -42,7 +46,7 @@ export class SigninComponent implements OnInit {
           this.loginForm.reset()
           this.router.navigate(['dashboard']);
         }
-      );
+      );     
   }
 
   // Handle response

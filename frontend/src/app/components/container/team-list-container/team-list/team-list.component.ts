@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Priority } from 'src/app/model/enum/priority.enum';
 import { TeamMember } from 'src/app/model/team-member';
@@ -20,7 +21,8 @@ export class TeamListComponent implements OnInit {
 
   constructor(public router:Router,
     public activatedRoute: ActivatedRoute,
-    public teamService: TeamService) 
+    public teamService: TeamService,
+    private titleService: Title) 
     {}
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class TeamListComponent implements OnInit {
        this.mapData(result)
       }
     );
+    this.titleService.setTitle("Team")  
   }
 
   showPersonDetail(id: string) {
