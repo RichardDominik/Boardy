@@ -83,7 +83,7 @@ h2 {
 }
 
 .pagination a {
-    color: #bb6bd9;
+    color: #7215d8;
     float: left;
     padding: 2px 16px 8px 16px;
     text-decoration: none;
@@ -99,11 +99,25 @@ h2 {
 
     thead {
         width: calc(100% - 32px) !important;
+        overflow: hidden;
+    }
+  
+    .team-table{
+        overflow-x: auto;
+        height: calc(100% - 30px - 113px);
+    }
+  
+    tr {
+        min-width: 500px;
     }
 
     #team-list-container {
         height: calc(100% - 45px);
         margin: 15px 15px 30px 15px;
+    }
+
+    h2 {
+        margin: 15px 30px 15px 30px;
     }
 
 }

@@ -37,7 +37,7 @@
 
     </div>
 
-    <table [ngClass]="{'task-table': true, 'task-table-filter': showFilter === true}">
+    <table [ngClass]="{'task-table': true, 'task-table-filter': showFilter === true}" (scroll)="onScroll($event)">
         <thead>
             <tr>
                 <th>Title</th>
@@ -47,7 +47,7 @@
                 <th>Priority</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
         <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
             <td>
                 <div class="task-table-title">{{task?.title}}</div>

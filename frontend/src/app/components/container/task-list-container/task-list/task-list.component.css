@@ -152,9 +152,17 @@ h2 {
 
   thead {
       width: calc(100% - 32px) !important;
-      overflow-x: hidden;
+      overflow: hidden;
   }
 
+  .task-table{
+      overflow-x: auto;
+      height: calc(100% - 30px - 113px);
+  }
+
+  tr {
+      min-width: 600px;
+  }
 
   .task-filter-option {
     display: block;
@@ -167,6 +175,10 @@ h2 {
   #task-list-container {
     height: calc(100% - 30px - 48px);
     margin: 0 15px 30px 15px;
+}
+
+h2 {
+    margin: 15px 30px 15px 30px;
 }
 
 }

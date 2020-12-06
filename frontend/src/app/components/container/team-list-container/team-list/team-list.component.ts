@@ -56,4 +56,8 @@ export class TeamListComponent implements OnInit {
       }
     )
   }
+
+  onScroll(event) {
+    event.target.getElementsByTagName("thead")[0].scrollLeft = event.target.scrollLeft;
+  }
 }
