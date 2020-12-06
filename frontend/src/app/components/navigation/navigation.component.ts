@@ -31,7 +31,6 @@ export class NavigationComponent implements OnInit {
   }
 
   hideMenu() {
-    console.log("here")
     document.getElementsByClassName("menu")[0].classList.toggle("open");
     document.getElementsByTagName("body")[0].classList.toggle("openMenu");
   }
