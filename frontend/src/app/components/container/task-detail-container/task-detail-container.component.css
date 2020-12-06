@@ -125,12 +125,13 @@ tbody {
 }
 
 @media screen and (max-width: 1024px) {
+
     .people-container {
-        width: calc(100% - 30px);
         margin: 20px 15px 20px 15px;
+        width: calc(100% - 30px);
     }
 
-    #task-detail-header {
+    #task-detail-header{
         padding: 15px 30px 0px 30px;
     }
 }

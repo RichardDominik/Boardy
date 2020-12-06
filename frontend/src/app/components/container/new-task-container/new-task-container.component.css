@@ -84,3 +84,32 @@
 .estimate {
     margin-top: 40px;
 }
+
+@media screen and (max-width: 1024px) {
+    .new-task-container {
+        margin: 15px 30px 15px 15px;
+        width: calc(100% - 30px);
+        
+    }
+
+    .field {
+        margin: 20px;
+    }
+
+    .other-fields {
+        display: block;
+    }
+
+    .estimate {
+        margin-top: 0;
+    }
+
+    .mat-form-field {
+        width: calc(100%);
+    }
+
+    .task-priority-values {
+        display: block;
+    }
+
+}
