@@ -43,7 +43,7 @@ class TaskController extends Controller
     }
 
     public function show(ShowTask $request, $id) : TaskResource {
-        return new TaskResource(Task::findOrFail($id)->loadMissing('comments'));
+        return new TaskResource(Task::findOrFail($id)->loadMissing('comments', 'subTasks'));
     }
 
     public function store(StoreTask $request): JsonResponse {

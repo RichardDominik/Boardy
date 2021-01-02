@@ -17,7 +17,7 @@ class TaskSeeder extends Seeder
         $users = User::all();
         $clients = Client::all();
 
-        collect(range(1, 25))->each(static function ($i) use ($users, $clients) {
+        collect(range(1, 100))->each(static function ($i) use ($users, $clients) {
             factory(Task::class, 1)->create([
                 'client_id' => $clients->random()->id,
                 'creator_id' => $users->random()->id,

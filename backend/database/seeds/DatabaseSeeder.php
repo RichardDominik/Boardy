@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ClientSeeder::class);
         $this->call(TaskSeeder::class);
         $this->call(CommentSeeder::class);
+        $this->call(SubtaskSeeder::class);
     }
 }

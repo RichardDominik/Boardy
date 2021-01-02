@@ -28,9 +28,11 @@ class Task extends JsonResource
             'finished_at' => $this->finished_at,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'parent_id' => $this->parent_id,
             'creator' => UserResource::make($this->creator),
             'assignee' => UserResource::make($this->assignee),
             'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'subTasks' => self::collection($this->whenLoaded('subTasks')),
         ];
     }
 }
