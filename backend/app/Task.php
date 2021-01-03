@@ -21,6 +21,7 @@ class Task extends Model
         'creator_id',
         'assignee_id',
         'finished_at',
+        'parent_id',
     ];
 
     protected $dates = [

@@ -36,6 +36,7 @@ class StoreTask extends FormRequest
             'deadline' => ['required', 'date_format:d/m/Y H:i'],
             'client_id' => ['sometimes', 'nullable'],
             'assignee_id' => ['sometimes', 'nullable'],
+            'parent_id' => ['sometimes', 'nullable'],
         ];
     }
 

@@ -37,6 +37,7 @@ class UpdateTask extends FormRequest
             'deadline' => ['sometimes', 'date_format:d/m/Y H:i'],
             'client_id' => ['sometimes', 'integer'],
             'assignee_id' => ['sometimes', 'nullable'],
+            'parent_id' => ['sometimes', 'nullable'],
         ];
     }
 
