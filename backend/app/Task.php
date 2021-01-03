@@ -103,4 +103,14 @@ class Task extends Model
     {
         return $this->hasMany(Comment::class)->orderBy('created_at', 'ASC');
     }
+
+    public function parent() : BelongsTo
+    {
+        return $this->belongsTo(Task::class, 'parent_id');
+    }
+
+    public function subTasks() : HasMany
+    {
+        return $this->hasMany(Task::class, 'parent_id');
+    }
 }
