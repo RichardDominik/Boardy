@@ -1,6 +1,6 @@
 .task-table {
     display: inline-block;
-    height: calc(100% - 30px - 124px);
+    height: calc(100% - 30px - 124px - 30px);
     margin-top: 28px;
     width: 100%;
     overflow-y: auto;
@@ -173,7 +173,7 @@ h2 {
     }
     .task-table {
         overflow-x: auto;
-        height: calc(100% - 30px - 113px);
+        height: calc(100% - 30px - 113px - 30px);
     }
     tr {
         min-width: 600px;

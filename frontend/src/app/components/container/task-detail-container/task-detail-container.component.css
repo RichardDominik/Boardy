@@ -124,6 +124,12 @@ tbody {
     max-height: 300px;
 }
 
+.assign-link {
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
 @media screen and (max-width: 1024px) {
 
     .people-container {
