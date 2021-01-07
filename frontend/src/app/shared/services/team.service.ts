@@ -13,15 +13,15 @@ export class TeamService {
   ){}
 
   getTeamMembers():Observable<any>{
-    return this.http.get('http://notabot.duckdns.org:56124/api/users');
+    return this.http.get('http://notabot.duckdns.org:32768/api/users');
   }
 
   getAllTeamMembers():Observable<any>{
-    return this.http.get('http://notabot.duckdns.org:56124/api/users/all');
+    return this.http.get('http://notabot.duckdns.org:32768/api/users/all');
   }
 
   getTeamMemberById(id:string):Observable<any>{
-    return this.http.get('http://notabot.duckdns.org:56124/api/users/get/'+id)
+    return this.http.get('http://notabot.duckdns.org:32768/api/users/get/'+id)
   }
 
   getPage(url: string){

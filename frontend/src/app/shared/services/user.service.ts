@@ -25,7 +25,7 @@ export class UserService {
   
   // Access user profile
   profileUser(): Observable<any> {
-    return this.http.get('http://notabot.duckdns.org:56124/api/auth/user-profile');
+    return this.http.get('http://notabot.duckdns.org:32768/api/auth/user-profile');
   }
 
   getUser(): Observable<User>{

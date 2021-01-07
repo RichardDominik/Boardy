@@ -18,11 +18,11 @@ export class AuthService {
 
   // User registration
   register(user: User): Observable<any> {
-    return this.http.post('http://notabot.duckdns.org:56124/api/auth/register', user);
+    return this.http.post('http://notabot.duckdns.org:32768/api/auth/register', user);
   }
 
   // Login
   signin(user: User): Observable<any> {
-    return this.http.post<any>('http://notabot.duckdns.org:56124/api/auth/login', user);
+    return this.http.post<any>('http://notabot.duckdns.org:32768/api/auth/login', user);
   }
 }

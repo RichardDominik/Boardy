@@ -2,6 +2,7 @@
     <table class="overview-table">
         <thead>
             <tr>
+                <td>Deadline</td>
                 <td>Estimate</td>
                 <td>Status</td>
                 <td>Priority</td>
@@ -10,6 +11,7 @@
         </thead>
         <tbody>
             <tr>
+                <td>{{task?.deadline.split(" ")[0]}}</td>
                 <td>{{task?.estimate}} hours</td>
                 <td>
                     <div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div>

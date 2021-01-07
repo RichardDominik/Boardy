@@ -1,16 +1,193 @@
 #container{
   background-color: #F2EDF3;
   height: calc(100vh - 50px); /*50px = header*/
+}
+
+.task-table {
+  display: inline-block;
+  height: calc(100% - 30px - 124px);
+  margin-top: 28px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.task-table-filter {
+  height: calc(100% - 30px - 200px);
+}
+
+thead {
+  position: absolute;
+  margin-top: -28px;
+  display: inline-block;
+  width: calc(100% - 200px - 62px);
+  background-color: white;
+}
+
+tbody {
+  display: inline-block;
+  width: 100%;
+}
+
+.task-table td {
   text-align: center;
-  
+  padding: 20px 0 20px 0;
+  display: inline-block;
+  width: 25%;
 }
 
-article {
-  padding-top: 35vh;
-  font-size: 2em;
+.task-table tr {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
 }
 
-span {
+.task-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.task-table thead tr {
+  border-bottom: 2px solid #dddddd;
+}
+
+.task-table th {
+  display: inline-block;
+  width: 25%;
+}
+
+h2 {
+  margin: 20px 40px 20px 40px;
+  float: left;
+}
+
+.task-filter-button {
+  float: right;
+  margin: 20px 20px 20px 20px;
+  cursor: pointer;
+  color: #7215d8;
+  font-weight: bold;
+}
+
+.task-filter {
+  float: left;
+  width: calc(100% - 80px);
+  margin: 0 40px 0 40px;
+  padding: 0 0 20px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.task-filter-option {
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.task-table-status {
+  display: inline-block;
+  padding: 0 7px;
+  border-radius: 10px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.task-table-item:hover {
+  background-color: #f7f8f9;
+  cursor: pointer;
+}
+
+.task-table-title {
+  text-align: left;
+  padding-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-table thead tr th:first {
+  text-align: left !important;
+}
+
+.right-button-container {
+  text-align: right;
+}
+
+.add-button {
+  margin: 10px 30px 10px 10px;
+  background-color: #7215d8;
+  border: none;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  outline: none;
+}
+
+.pagination a {
+  color: #7215d8;
+  float: left;
+  padding: 2px 16px 8px 16px;
+  text-decoration: none;
+  font-size: x-large;
+  transition: background-color .3s;
+}
+
+.pagination a span {
   font-size: large;
-  color: gray;
+}
+
+#task-list-container {
+  display: block;
+  margin: 30px;
+  height: calc(100% - 60px);
+  border: 1px solid #dddddd;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.pagination-links {
+  margin: auto;
+}
+
+.pagination a:hover {
+  cursor: pointer;
+}
+
+.task-table-deadline {
+  padding:0 !important;
+}
+
+@media screen and (max-width: 1024px) {
+
+thead {
+    width: calc(100% - 32px) !important;
+    overflow: hidden;
+}
+
+.task-table{
+    overflow-x: auto;
+    height: calc(100% - 30px - 113px);
+}
+
+tr {
+    min-width: 600px;
+}
+
+.task-filter-option {
+  display: block;
+}
+
+.task-table-filter {
+  height: calc(100% - 30px - 200px - 112px);
+}
+
+#task-list-container {
+  height: calc(100% - 30px - 48px);
+  margin: 0 15px 30px 15px;
+}
+
+h2 {
+  margin: 15px 30px 15px 30px;
+}
+
 }

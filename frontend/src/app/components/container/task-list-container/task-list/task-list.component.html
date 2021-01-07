@@ -59,7 +59,7 @@
                 <ng-template #empty>
                     <td></td>
                 </ng-template>
-                <td>{{task.estimate}} hours</td>
+                <td class="task-table-deadline">{{task?.deadline.split(" ")[0]}}<br>{{task.estimate}} hours</td>
                 <td>
                     <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
                 </td>

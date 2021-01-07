@@ -6,8 +6,8 @@ import { Injectable } from '@angular/core';
 export class TokenService {
 
   private issuer = {
-    login: 'http://notabot.duckdns.org:56124/api/auth/login',
-    register: 'http://notabot.duckdns.org:56124/api/auth/register'
+    login: 'http://notabot.duckdns.org:32768/api/auth/login',
+    register: 'http://notabot.duckdns.org:32768/api/auth/register'
   }
 
   constructor() { }

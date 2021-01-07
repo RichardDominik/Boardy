@@ -12,19 +12,19 @@ export class TaskService {
    }
 
    getTasks():Observable<any>{
-     return this.http.get<any>('http://notabot.duckdns.org:56124/api/tasks');
+     return this.http.get<any>('http://notabot.duckdns.org:32768/api/tasks');
    }
 
    getTaskById(id:string):Observable<any>{
-     return this.http.get<any>('http://notabot.duckdns.org:56124/api/tasks/'+id);
+     return this.http.get<any>('http://notabot.duckdns.org:32768/api/tasks/'+id);
    }
 
    updateTask(task_id:number, body:any){
-    return this.http.post<any>('http://notabot.duckdns.org:56124/api/tasks/'+task_id, body);
+    return this.http.post<any>('http://notabot.duckdns.org:32768/api/tasks/'+task_id, body);
    }
 
    createTask(task:any){
-    return this.http.post<any>('http://notabot.duckdns.org:56124/api/tasks', task);
+    return this.http.post<any>('http://notabot.duckdns.org:32768/api/tasks', task);
    }
 
    getPage(url: string){
@@ -32,6 +32,6 @@ export class TaskService {
    }
 
    filterTask(filter:any){
-     return this.http.get('http://notabot.duckdns.org:56124/api/tasks', {params: filter})
+     return this.http.get('http://notabot.duckdns.org:32768/api/tasks', {params: filter})
    }
 }

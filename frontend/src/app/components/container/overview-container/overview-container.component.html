@@ -1,7 +1,66 @@
 <app-header></app-header>
 <app-navigation></app-navigation>
 <div id="container">
-    <article>"It is quality rather than quantity that matters."<br>
-        <span>Comming soon &#9874;</span></article>
+    <div id="task-list-container">
+        <h2>My tasks</h2>
+    
+        <div class="task-filter-button" (click)="showHideFilter()">Filter</div>
+        <div [ngClass]="{'task-filter': true, 'hidden': showFilter === false}">
+            <div class="task-filter-option">
+                <label for="task-filter-prio">Priority</label><br>
+                <select id="task-filter-prio" (change)="onFilter($event.target)">
+                    <option value="">ALL</option>
+                    <option value="low">LOW</option>
+                    <option value="medium">MEDIUM</option>
+                    <option value="high">HIGH</option>
+                </select>
+            </div>
+            <div class="task-filter-option">
+                <label for="task-filter-status">Status</label><br>
+                <select id="task-filter-status" (change)="onFilter($event.target)">
+                    <option value="">ALL</option>
+                    <option value="free">FREE</option>
+                    <option value="in_progress">IN PROGRESS</option>
+                    <option value="to_test">TO TEST</option>
+                    <option value="done">DONE</option>
+                </select>
+            </div>
+    
+        </div>
+    
+        <table [ngClass]="{'task-table': true, 'task-table-filter': showFilter === true}" (scroll)="onScroll($event)">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Deadline/Estimate</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let task of filteredTasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
+                    <td>
+                        <div class="task-table-title">{{task?.title}}</div>
+                    </td>
+                    <td>
+                        <div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div>
+                    </td>
+                    <ng-template #empty>
+                        <td></td>
+                    </ng-template>
+                    <td class="task-table-deadline">{{task?.deadline.split(" ")[0]}}<br>{{task.estimate}} hours</td>
+                    <td>
+                        <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <div class="pagination-links">
+                <a *ngIf="pagination.prev != null" (click)="prevPage()"><span>Prev</span> &laquo;</a>
+                <a *ngIf="pagination.next != null" (click)="nextPage()">&raquo; <span>Next</span></a>
+            </div>
+        </div>
+    </div>
 </div>
 <app-footer></app-footer>
