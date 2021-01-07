@@ -8,6 +8,7 @@
 
 .overview-table {
     width: 100%;
+    table-layout: fixed;
 }
 
 .overview-table thead tr td {
@@ -37,6 +38,10 @@
 
 .description-area {
     width: 80%;
+}
+
+.after-deadline-warning {
+    color: #CC0000;
 }
 
 @media screen and (max-width: 1024px) {

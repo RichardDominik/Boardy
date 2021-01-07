@@ -2,17 +2,15 @@
     <table class="overview-table">
         <thead>
             <tr>
-                <td>Deadline</td>
-                <td>Estimate</td>
                 <td>Status</td>
                 <td>Priority</td>
                 <td>Rank</td>
+                <td>Estimate <span *ngIf="user?.id == task?.creator?.id && !isEstimateEditMode" class="fa fa-pencil edit" (click)="editEstimate()"></span></td>
+                <td>Deadline <span *ngIf="user?.id == task?.creator?.id && !isDeadlineEditMode" class="fa fa-pencil edit" (click)="editDeadline()"></span></td>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>{{task?.deadline.split(" ")[0]}}</td>
-                <td>{{task?.estimate}} hours</td>
                 <td>
                     <div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div>
                 </td>
@@ -20,6 +18,28 @@
                     <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
                 </td>
                 <td>{{task?.rank}}</td>
+                <td>
+                    <div *ngIf="isEstimateEditMode">
+                        <form [formGroup]="estimateGroup" (ngSubmit)="saveEstimate()">
+                            <input type="number" formControlName="estimate" name="estimate" min="1" max="200" />
+                            <input type="submit" />
+                        </form>
+                    </div>
+                    <p *ngIf="!isEstimateEditMode">
+                        {{task?.estimate}} hours
+                    </p>
+                </td>
+                <td>
+                    <div *ngIf="isDeadlineEditMode">
+                        <form [formGroup]="deadlineGroup" (ngSubmit)="saveDeadline()">
+                            <input type="date" formControlName="deadline" name="deadline" />
+                            <input type="submit" />
+                        </form>
+                    </div>
+                    <p #editDeadlineField *ngIf="!isDeadlineEditMode" [ngClass]="{'after-deadline-warning': isAfterDeadline}">
+                        {{task?.deadline.split(" ")[0]}}
+                    </p>
+                </td>
             </tr>
         </tbody>
     </table>
