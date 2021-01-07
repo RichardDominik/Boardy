@@ -75,6 +75,11 @@ export class TaskListComponent implements OnInit {
     this.showFilter = true;
   }
 
+  onCustomFilter(value) {
+    this.filter.status = value
+    this.filterTasks()
+  }
+
   onFilter(target) {
     let wasChange = false;
     switch(target.id) {

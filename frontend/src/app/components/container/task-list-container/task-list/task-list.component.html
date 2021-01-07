@@ -5,6 +5,25 @@
     <h2>All tasks</h2>
 
     <div class="task-filter-button" (click)="showHideFilter()">Filter</div>
+    <div class="common-filters_container">
+        <form>
+            <input type="radio" id="all" value="" name="status" (change)="onCustomFilter($event.target.value)" checked/>
+            <label class="radio-label" for="all">All</label>
+
+            <input class="radio-button" type="radio" id="free" value="free" name="status" (change)="onCustomFilter($event.target.value)" />
+            <label class="radio-label" for="free">Free</label>
+
+            <input class="radio-button" type="radio" id="in-progress" value="in_progress" name="status" (change)="onCustomFilter($event.target.value)" />
+            <label class="radio-label" for="in-progress">In progress</label>
+
+            <input class="radio-button" type="radio" id="test" value="to_test" name="status" (change)="onCustomFilter($event.target.value)" />
+            <label class="radio-label" for="test">To test</label>
+
+            <input class="radio-button" type="radio" id="done" value="done" name="status" (change)="onCustomFilter($event.target.value)" />
+            <label class="radio-label" for="done">Done</label>
+        </form>
+    </div>
+
     <div [ngClass]="{'task-filter': true, 'hidden': showFilter === false}">
         <div class="task-filter-option">
             <label for="task-filter-prio">Priority</label><br>

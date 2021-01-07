@@ -149,40 +149,49 @@ h2 {
 }
 
 .task-table-deadline {
-    padding:0 !important;
+    padding: 0 !important;
+}
+
+.common-filters_container {
+    float: left;
+    width: 100%;
+    margin-left: 30px;
+}
+
+.radio-label {
+    margin-left: 5px;
+}
+
+.radio-button {
+    margin-left: 15px;
 }
 
 @media screen and (max-width: 1024px) {
-
-  thead {
-      width: calc(100% - 32px) !important;
-      overflow: hidden;
-  }
-
-  .task-table{
-      overflow-x: auto;
-      height: calc(100% - 30px - 113px);
-  }
-
-  tr {
-      min-width: 600px;
-  }
-
-  .task-filter-option {
-    display: block;
-  }
-
-  .task-table-filter {
-    height: calc(100% - 30px - 200px - 112px);
-  }
-
-  #task-list-container {
-    height: calc(100% - 30px - 48px);
-    margin: 0 15px 30px 15px;
-}
-
-h2 {
-    margin: 15px 30px 15px 30px;
-}
-
+    thead {
+        width: calc(100% - 32px) !important;
+        overflow: hidden;
+    }
+    .task-table {
+        overflow-x: auto;
+        height: calc(100% - 30px - 113px);
+    }
+    tr {
+        min-width: 600px;
+    }
+    .task-filter-option {
+        display: block;
+    }
+    .task-table-filter {
+        height: calc(100% - 30px - 200px - 112px);
+    }
+    #task-list-container {
+        height: calc(100% - 30px - 48px);
+        margin: 0 15px 30px 15px;
+    }
+    h2 {
+        margin: 15px 30px 15px 30px;
+    }
+    .common-filters_container {
+        margin-left: 15px;
+    }
 }
