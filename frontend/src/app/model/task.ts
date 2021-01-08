@@ -32,6 +32,8 @@ export class Task{
         "created_at": string;
         "updated_at":string
     };
+    parent_id:number;
+    subTasks:Task[];
     comments:Comment[];
 
     constructor(data:any){
@@ -49,6 +51,8 @@ export class Task{
             this.client_id = data.client_id;
             this.creator = data.creator;
             this.assignee = data.assignee;
+            this.parent_id = data.parent_id;
+            this.subTasks = data.subTasks?.map(val => new Task(val));
             this.comments = data.comments?.map(val => new Comment(val));
     }
 }

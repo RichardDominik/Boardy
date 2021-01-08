@@ -31,6 +31,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FooterComponent } from './components/footer/footer.component';
+import { SubtaskListComponent } from './components/container/task-detail-container/subtask-list/subtask-list.component';
 
 registerLocaleData(localeSk, 'sk-SK');
 
@@ -55,7 +56,8 @@ registerLocaleData(localeSk, 'sk-SK');
     OverviewContainerComponent,
     TeamListContainerComponent,
     TeamListComponent,
-    FooterComponent
+    FooterComponent,
+    SubtaskListComponent
     ],
   imports: [
     BrowserModule,

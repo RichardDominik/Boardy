@@ -13,12 +13,13 @@
 }
 
 .people-container {
-    width: 40%;
+    width: 30%;
     background-color: white;
     border: 1px solid transparent;
     border-radius: 20px;
     margin: 20px;
     padding: 10px;
+    float: left;
 }
 
 h4 {
@@ -133,7 +134,7 @@ tbody {
 @media screen and (max-width: 1024px) {
 
     .people-container {
-        margin: 20px 15px 20px 15px;
+        margin: 20px 15px 0 15px;
         width: calc(100% - 30px);
     }
 

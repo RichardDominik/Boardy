@@ -1,0 +1,111 @@
+.subtask {
+  width: calc(70% - 60px);
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  margin: 20px 20px 20px 0;
+  float: left;
+}
+
+h4 {
+  font-size: large;
+  font-weight: bold;
+  float:left;
+  margin: 15px 15px 8px 15px;
+}
+
+.add-button {
+  margin: 10px 15px 10px 10px;
+  background-color: #7215d8;
+  border: none;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  outline: none;
+  float: right;
+}
+
+.task-table {
+  display: inline-block;
+  margin-top: 28px;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+thead {
+  position: absolute;
+  margin-top: -28px;
+  display: inline-block;
+  width: calc(70% - 200px);
+  background-color: white;
+}
+
+tbody {
+  display: inline-block;
+  width: 100%;
+}
+
+.task-table td {
+  text-align: center;
+  padding: 20px 0 20px 0;
+  display: inline-block;
+  width: 20%;
+}
+
+.task-table tr {
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.task-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.task-table thead tr {
+  border-bottom: 2px solid #dddddd;
+}
+
+.task-table th {
+  display: inline-block;
+  width: 20%;
+}
+
+.task-table-status {
+  display: inline-block;
+  padding: 0 7px;
+  border-radius: 10px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.task-table-title {
+  text-align: left;
+  padding-left: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-table-item:hover {
+  background-color: #f7f8f9;
+  cursor: pointer;
+}
+
+.task-table thead tr th:first {
+  text-align: left !important;
+}
+
+@media screen and (max-width: 1024px) {
+
+  .subtask {
+      margin: 20px 15px 0 15px;
+      width: calc(100% - 30px);
+  }
+
+  thead {
+    width: calc(100% - 32px) !important;
+    overflow: hidden;
+  }
+}

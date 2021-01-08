@@ -1,0 +1,67 @@
+<div class="subtask">
+  <div *ngIf="!task?.parent_id">
+    <h4>Subtasks</h4>
+    <button class="add-button">+ Add subtask</button>
+    <table *ngIf="task?.subTasks.length > 0" class="task-table" (scroll)="onScroll($event)">
+      <thead>
+          <tr>
+              <th>Title</th>
+              <th>Status</th>
+              <th>Assignee</th>
+              <th>Estimate</th>
+              <th>Priority</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let subtask of task.subTasks" (click)="showTaskDetail(subtask?.id)" class="task-table-item">
+              <td>
+                  <div class="task-table-title">{{subtask?.title}}</div>
+              </td>
+              <td>
+                  <div class="task-table-status {{subtask?.status}}">{{status[subtask?.status]}}</div>
+              </td>
+              <td>{{subtask?.assignee?.name ? subtask?.assignee?.name : "&nbsp;"}}</td>
+              <ng-template #empty>
+                  <td></td>
+              </ng-template>
+              <td>{{subtask.estimate}} hours</td>
+              <td>
+                  <div class="task-table-status {{subtask?.priority}}">{{priority[subtask?.priority]}}</div>
+              </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="parent">
+    <h4>Parent task</h4>
+    <table class="task-table" (scroll)="onScroll($event)">
+      <thead>
+          <tr>
+              <th>Title</th>
+              <th>Status</th>
+              <th>Assignee</th>
+              <th>Estimate</th>
+              <th>Priority</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr (click)="showTaskDetail(parent.id)" class="task-table-item">
+              <td>
+                  <div class="task-table-title">{{parent?.title}}</div>
+              </td>
+              <td>
+                  <div class="task-table-status {{parent?.status}}">{{status[parent?.status]}}</div>
+              </td>
+              <td>{{parent?.assignee?.name ? parent?.assignee?.name : "&nbsp;"}}</td>
+              <ng-template #empty>
+                  <td></td>
+              </ng-template>
+              <td>{{parent.estimate}} hours</td>
+              <td>
+                  <div class="task-table-status {{parent?.priority}}">{{priority[parent?.priority]}}</div>
+              </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

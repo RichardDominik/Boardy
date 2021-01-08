@@ -34,6 +34,7 @@
         </ng-template>
     </div>
 </div>
+<app-subtask-list *ngIf="task" [task]="task"></app-subtask-list>
 <ng-template #mymodal let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Choose a person</h4>

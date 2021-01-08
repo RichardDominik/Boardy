@@ -44,7 +44,6 @@ export class TaskOverviewComponent implements OnInit {
     this.estimateGroup = this.formBuilder.group({
       estimate: this.task?.estimate
     })
-    console.log(this.task.description)
     this.isDeadlineValid()
   }
 
@@ -93,6 +92,5 @@ export class TaskOverviewComponent implements OnInit {
 
   isDeadlineValid(){
     this.isAfterDeadline = new Date(this.task.deadline).getTime() < new Date().getTime() 
-    console.log(this.isAfterDeadline)
   }
 }
