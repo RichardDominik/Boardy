@@ -1,7 +1,7 @@
 <div class="subtask">
   <div *ngIf="!task?.parent_id">
     <h4>Subtasks</h4>
-    <button class="add-button">+ Add subtask</button>
+    <button class="add-button" (click)="addSubtask()">+ Add subtask</button>
     <table *ngIf="task?.subTasks.length > 0" class="task-table" (scroll)="onScroll($event)">
       <thead>
           <tr>

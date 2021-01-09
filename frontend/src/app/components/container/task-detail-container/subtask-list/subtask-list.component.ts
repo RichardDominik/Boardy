@@ -44,4 +44,8 @@ export class SubtaskListComponent implements OnInit {
     event.target.getElementsByTagName("thead")[0].scrollLeft = event.target.scrollLeft;
   }
 
+  addSubtask() {
+    this.router.navigate(['task-list', 'new-task', this.task.id]);
+  }
+
 }

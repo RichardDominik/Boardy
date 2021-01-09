@@ -37,7 +37,7 @@ thead {
   position: absolute;
   margin-top: -28px;
   display: inline-block;
-  width: calc(70% - 200px);
+  width: calc(70% - 201px);
   background-color: white;
 }
 
@@ -105,7 +105,7 @@ tbody {
   }
 
   thead {
-    width: calc(100% - 32px) !important;
+    width: calc(100% - 32px - 10px) !important;
     overflow: hidden;
   }
 }

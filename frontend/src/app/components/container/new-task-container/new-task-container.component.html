@@ -2,7 +2,7 @@
     <form [formGroup]="taskForm" (ngSubmit)="createNewTask()">
         <div class="fields-container">
             <div class="field task-title">
-                <h4>Title</h4>
+                <h4>{{taskForm.value.parent_id ? "Subtask" : "Task" }} title</h4>
                 <input class="text-input form-control" type="text" formControlName="title" />
             </div>
             <div class="other-fields">
