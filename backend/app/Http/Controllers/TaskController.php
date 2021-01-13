@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Task\AllTask;
 use App\Http\Requests\Task\DestroyTask;
 use App\Http\Requests\Task\IndexTask;
 use App\Http\Requests\Task\ShowTask;
@@ -40,6 +41,10 @@ class TaskController extends Controller
                 $query->whereIn('assignee_id', $request->get('assignee'));
             }
         })->orderBy($orderByColumn, $orderDirection)->paginate());
+    }
+
+    public function allTasksWithoutParent(AllTask $request) : TaskCollection {
+        return new TaskCollection(Task::whereNull('parent_id')->get());
     }
 
     public function show(ShowTask $request, $id) : TaskResource {

@@ -23,6 +23,10 @@ Route::middleware(['auth:api'])->group(function () {
         Route::delete('{id}',                               'TaskController@destroy')->name('destroy');
     });
 
+    Route::prefix('all-tasks-without-parent')->group(static function() {
+        Route::get('/',                                     'TaskController@allTasksWithoutParent');
+    });
+
     Route::prefix('users')->group(static function() {
         Route::get('/',                                     'UserController@index');
         Route::get('/get/{id}',                             'UserController@show');
