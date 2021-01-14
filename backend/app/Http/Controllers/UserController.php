@@ -27,7 +27,7 @@ class UserController extends Controller
     }
 
     public function all(AllUser $request) : UserCollection {
-        return new UserCollection(User::all());
+        return new UserCollection(User::with('assignedTasks')->get());
     }
 
     public function show(ShowUser $request, $id) : UserResource {
