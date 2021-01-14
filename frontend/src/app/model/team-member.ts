@@ -10,6 +10,7 @@ export class TeamMember {
     avg_task_priority:string;
     avg_time:string;
     current_tasks:Task[]
+    numberOfAssignedTasks: number
 
     constructor(data:any){
         this.id = data.id;
@@ -21,5 +22,6 @@ export class TeamMember {
         let time = data.avg_time?.split(" ");
         this.avg_time = data.avg_time ? time[0]+time[1]+" "+time[2]+time[3] : data.avg_time;
         this.current_tasks = data.assignedTasks?.map(val=> new Task(val))
+        this.numberOfAssignedTasks = data.numberOfAssignedTasks
     }
 }

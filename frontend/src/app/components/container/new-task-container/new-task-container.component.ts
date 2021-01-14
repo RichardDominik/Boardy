@@ -69,6 +69,7 @@ export class NewTaskContainerComponent implements OnInit {
           this.router.navigate(['/task-list/task-detail'], { queryParams: { id: result.data.id }})
       }, error=>{
         //todo validations
+        this.isDateFormated = false;
       }
     )
   }

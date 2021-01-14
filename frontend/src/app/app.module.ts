@@ -32,6 +32,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FooterComponent } from './components/footer/footer.component';
 import { SubtaskListComponent } from './components/container/task-detail-container/subtask-list/subtask-list.component';
+import { AssignedListComponent } from './components/container/overview-container/assigned-list/assigned-list.component';
+import { CreatedListComponent } from './components/container/overview-container/created-list/created-list.component';
 
 registerLocaleData(localeSk, 'sk-SK');
 
@@ -57,7 +59,9 @@ registerLocaleData(localeSk, 'sk-SK');
     TeamListContainerComponent,
     TeamListComponent,
     FooterComponent,
-    SubtaskListComponent
+    SubtaskListComponent,
+    AssignedListComponent,
+    CreatedListComponent
     ],
   imports: [
     BrowserModule,

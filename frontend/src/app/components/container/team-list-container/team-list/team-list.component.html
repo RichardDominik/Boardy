@@ -6,18 +6,18 @@
                 <th>Name</th>
                 <th>Rank</th>
                 <th>Average task priority</th>
-                <th>Average time on task</th>
+                <th>Current # of tasks</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let person of team" (click)="showPersonDetail(person.id)" class="team-table-item">
                 <td>{{person.name}}</td>
-                <td>{{person.rank}}</td>
+                <td>{{person.rank == null ? ('0/5'):(person.rank+'/5')}}</td>
                 <td>
                     <div class="task-table-status {{person.avg_task_priority}}">{{priority[person.avg_task_priority]}}</div>
                 </td>
                 <td>
-                    <div>{{person.avg_time ? person.avg_time : "&nbsp;"}}</div>
+                    <div>{{person.numberOfAssignedTasks}}</div>
                 </td>
             </tr>
         </tbody>

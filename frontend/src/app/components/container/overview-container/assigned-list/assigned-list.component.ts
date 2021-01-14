@@ -1,21 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
-import { stringify } from 'querystring';
 import { Priority } from 'src/app/model/enum/priority.enum';
 import { Status } from 'src/app/model/enum/status.enum';
 import { Task } from 'src/app/model/task';
-import { TeamMember } from 'src/app/model/team-member';
 import { TaskService } from 'src/app/shared/services/task.service';
-import { TeamService } from 'src/app/shared/services/team.service';
+import { User, UserService } from 'src/app/shared/services/user.service';
+import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-task-list',
-  templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  selector: 'app-assigned-list',
+  templateUrl: './assigned-list.component.html',
+  styleUrls: ['./assigned-list.component.css']
 })
-export class TaskListComponent implements OnInit {
-
+export class AssignedListComponent implements OnInit {
   priority = Priority;
   status = Status;
   pagination = {
@@ -23,8 +21,8 @@ export class TaskListComponent implements OnInit {
     next: ""
   }
   
-  team:TeamMember[];
   tasks:Task[];
+  user:User;
   filteredTasks:Task[];
   showFilter = false;
   filter= {
@@ -36,25 +34,20 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     public router:Router,
-    public activatedRoute: ActivatedRoute,
     public taskService: TaskService,
-    public teamService: TeamService,
+    public userService: UserService,
     public titleService: Title
   ) {}
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe(
+    this.userService.getUser().subscribe(
       result=>{
-       this.mapData(result)
+       this.user = result;
+       this.filterTasks();
       }
     );
-
-    this.teamService.getAllTeamMembers().subscribe(
-      result => {
-        this.team = result.data.map(val => new TeamMember(val));
-      }
-    )
-    this.titleService.setTitle("Task list")
+    
+   
   }
 
   mapData(result:any) {
@@ -63,8 +56,8 @@ export class TaskListComponent implements OnInit {
     
     let filter = (this.filter.prio? "&priority[]="+this.filter.prio : "")+
       (this.filter.status? "&status[]="+this.filter.status : "")+
-      (this.filter.assignee? "&assignee[]="+this.filter.assignee : "")+
-      (this.filter.title? "&title="+this.filter.title:"");
+      ("&assignee[]="+this.user.id)+
+      ("&title="+this.filter.title);
     this.pagination.prev = result.links.prev ? result.links.prev+filter : result.links.prev;
     this.pagination.next = result.links.next ? result.links.next+filter : result.links.next;
   }
@@ -97,16 +90,11 @@ export class TaskListComponent implements OnInit {
         }
         this.filter.status = target.value;
         break;
-      case "task-filter-assignee":
-        if(this.filter.assignee != target.value){
-          wasChange = true;
-        }
-        this.filter.assignee = target.value;
       case "task-filter-title":
-        if(this.filter.title != target.value){
-          wasChange = true;
-        }
-        this.filter.title = target.value;
+          if(this.filter.title != target.value){
+            wasChange = true;
+          }
+          this.filter.title = target.value;
     }
     if(wasChange){
       this.filterTasks();
@@ -118,7 +106,7 @@ export class TaskListComponent implements OnInit {
     let filter = {
       "priority[]": (this.filter.prio &&  this.filter.prio!="" ? this.filter.prio:undefined),
       "status[]": (this.filter.status &&  this.filter.status!="" ? this.filter.status:undefined),
-      "assignee[]": (this.filter.assignee &&  this.filter.assignee!="" ? this.filter.assignee:undefined),
+      "assignee[]": this.user.id,
       "title": (this.filter.title &&  this.filter.title!="" ? this.filter.title:undefined)
     }
 
@@ -130,11 +118,7 @@ export class TaskListComponent implements OnInit {
   }
 
   showTaskDetail(id:string){
-    this.router.navigate(['task-detail'],  { queryParams: { id: id }, relativeTo:this.activatedRoute });
-  }
-
-  addTask(){
-    this.router.navigate(['new-task'], {relativeTo:this.activatedRoute });
+    this.router.navigate(['task-list', 'task-detail'],  { queryParams: { id: id }});
   }
 
   prevPage(){

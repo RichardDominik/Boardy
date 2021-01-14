@@ -1,17 +1,11 @@
-<div class="right-button-container">
-    <button class="add-button" (click)="addTask()"> + Add task</button>
-</div>
 <div id="task-list-container">
-    <h2>All tasks</h2>
+    <h2>Created by me</h2>
 
     <div class="task-filter-button" (click)="showHideFilter()">Filter</div>
     <div class="common-filters_container">
         <form>
             <input type="radio" id="all" value="" name="status" (change)="onCustomFilter($event.target.value)" checked/>
             <label class="radio-label" for="all">All</label>
-
-            <input class="radio-button" type="radio" id="free" value="free" name="status" (change)="onCustomFilter($event.target.value)" />
-            <label class="radio-label" for="free">Free</label>
 
             <input class="radio-button" type="radio" id="in-progress" value="in_progress" name="status" (change)="onCustomFilter($event.target.value)" />
             <label class="radio-label" for="in-progress">In progress</label>
@@ -23,7 +17,6 @@
             <label class="radio-label" for="done">Done</label>
         </form>
     </div>
-
     <div [ngClass]="{'task-filter': true, 'hidden': showFilter === false}">
         <div class="task-filter-option">
             <label for="task-filter-title">Title</label><br>
@@ -57,6 +50,7 @@
                 <option value="high">HIGH</option>
             </select>
         </div>
+
     </div>
 
     <table [ngClass]="{'task-table': true, 'task-table-filter': showFilter === true}" (scroll)="onScroll($event)">
@@ -64,8 +58,7 @@
             <tr>
                 <th>Title</th>
                 <th>Status</th>
-                <th>Assignee</th>
-                <th>Deadline/Estimate</th>
+                <th>Deadline</th>
                 <th>Priority</th>
             </tr>
         </thead>
@@ -77,11 +70,10 @@
                 <td>
                     <div class="task-table-status {{task?.status}}">{{status[task?.status]}}</div>
                 </td>
-                <td>{{task?.assignee?.name ? task?.assignee?.name : "&nbsp;"}}</td>
                 <ng-template #empty>
                     <td></td>
                 </ng-template>
-                <td class="task-table-deadline">{{task?.deadline.split(" ")[0]}}<br>{{task.estimate}} hours</td>
+                <td class="task-table-deadline">{{task?.deadline.split(" ")[0]}}</td>
                 <td>
                     <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
                 </td>

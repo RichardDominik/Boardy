@@ -34,4 +34,8 @@ export class TaskService {
    filterTask(filter:any){
      return this.http.get('http://notabot.duckdns.org:32768/api/tasks', {params: filter})
    }
+
+   getTaskByTitle(keyword:string){
+     return this.http.get('http://notabot.duckdns.org:32768/api/tasks',{params: {title: keyword}})
+   }
 }
