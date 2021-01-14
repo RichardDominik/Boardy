@@ -17,7 +17,7 @@
                 <td>
                     <div class="task-table-status {{task?.priority}}">{{priority[task?.priority]}}</div>
                 </td>
-                <td>{{task?.rank}}/5</td>
+                <td>{{task.rank == null ? ('0/5'):(task.rank+'/5')}}</td>
                 <td>
                     <div *ngIf="isEstimateEditMode">
                         <form [formGroup]="estimateGroup" (ngSubmit)="saveEstimate()">

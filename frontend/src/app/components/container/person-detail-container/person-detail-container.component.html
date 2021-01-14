@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{person?.rank}}/5</td>
+                <td>{{person.rank == null ? ('0/5'):(person.rank+'/5')}}</td>
                 <td>
                     <div class="person-table-status {{person?.avg_task_priority}}">{{priority[person?.avg_task_priority]}}</div>
                 </td>
