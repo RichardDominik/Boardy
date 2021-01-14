@@ -32,7 +32,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import { FooterComponent } from './components/footer/footer.component';
 import { SubtaskListComponent } from './components/container/task-detail-container/subtask-list/subtask-list.component';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 registerLocaleData(localeSk, 'sk-SK');
 
 @NgModule({
@@ -58,7 +58,7 @@ registerLocaleData(localeSk, 'sk-SK');
     TeamListComponent,
     FooterComponent,
     SubtaskListComponent
-    ],
+      ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -69,7 +69,8 @@ registerLocaleData(localeSk, 'sk-SK');
     BrowserAnimationsModule,
     MatDatepickerModule,
     MatInputModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule
   ],
   providers: [
     {

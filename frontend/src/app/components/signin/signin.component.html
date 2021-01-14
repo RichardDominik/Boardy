@@ -1,33 +1,25 @@
 <div id="auth-wrapper">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">  
-        <div *ngIf="errors?.email" class="alert alert-danger mt-3">
-            {{ errors?.email }}
-        </div>
-        <div *ngIf="errors?.password" class="alert alert-danger mt-3">
-            {{ errors?.password }}
-        </div>
-        <div *ngIf="errors?.error" class="alert alert-danger mt-3">
-            {{ errors?.error }}
-        </div>
-        <h2
-        id="title">
-          Boardy
+    <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+        {{ errors?.email }}
+    </div>
+    <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+        {{ errors?.password }}
+    </div>
+    <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+        {{ errors?.error }}
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+        <h2 id="title">
+            Boardy
         </h2>
         <div id="email-container">
-          <i class="fa fa-user absolute text-primarycolor text-xl"></i>
-          <input
-          class="form-control" formControlName="email"
-            type="text"
-            placeholder="email"
-          />
+            <i class="fa fa-user absolute text-primarycolor text-xl"></i>
+            <input class="form-control" formControlName="email" type="text" placeholder="email" />
         </div>
         <div id="password-container">
-          <i class="fa fa-lock absolute text-primarycolor text-xl"></i>
-          <input
-          class="form-control" formControlName="password"
-            type="password"
-            placeholder="password"
-          />
+            <i class="fa fa-lock absolute text-primarycolor text-xl"></i>
+            <input class="form-control" formControlName="password" type="password" placeholder="password" />
         </div>
         <button id="submit-button" type="submit" class="btn btn-block btn-primary">Sign in</button>
         <a routerLink="/sign-up">Create an account</a>

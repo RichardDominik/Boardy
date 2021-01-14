@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{person?.rank}}</td>
+                <td>{{person?.rank}}/5</td>
                 <td>
                     <div class="person-table-status {{person?.avg_task_priority}}">{{priority[person?.avg_task_priority]}}</div>
                 </td>
@@ -36,7 +36,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let task of person?.current_tasks" (click)="showTaskDetail(task?.id)" class="task-table-item">
-                <td><div class="task-table-title">{{task?.title}}</div></td>
+                <td>
+                    <div class="task-table-title">{{task?.title}}</div>
+                </td>
                 <td>
                     <div class="task-table-status {{task.status}}">{{status[task?.status]}}</div>
                 </td>

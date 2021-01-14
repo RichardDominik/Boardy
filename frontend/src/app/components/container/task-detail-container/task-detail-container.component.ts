@@ -1,7 +1,7 @@
 import { formatDate, registerLocaleData } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UseExistingWebDriver } from 'protractor/built/driverProviders';
 import { Priority } from 'src/app/model/enum/priority.enum';
@@ -11,6 +11,11 @@ import { TeamMember } from 'src/app/model/team-member';
 import { TaskService } from 'src/app/shared/services/task.service';
 import { TeamService } from 'src/app/shared/services/team.service';
 import { User, UserService } from 'src/app/shared/services/user.service';
+import {FormControl} from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+
 
 
 @Component({
@@ -25,6 +30,15 @@ export class TaskDetailContainerComponent implements OnInit {
   team: TeamMember[];
   currentUser: User;
   closeResult: string;
+  hasSubtasks: Boolean;
+  hasParent: Boolean;
+  availableTasks: Task[] = []
+  selectedRelation: string = "parent"
+  selectedTask: Task
+
+  myControl = new FormControl();
+  filteredOptions: Observable<Task[]>;
+
 
   constructor(
     private route:ActivatedRoute,
@@ -32,8 +46,24 @@ export class TaskDetailContainerComponent implements OnInit {
     private teamService:TeamService,
     private userService:UserService,
     private modalService: NgbModal,
-    private titleService: Title
+    private titleService: Title,
+    public router:Router,
+    public activatedRoute: ActivatedRoute
   ) { }
+
+
+​
+  private _filter(value: string): Task[] {
+    const filterValue = value.toString().toLowerCase();
+​
+    let tasks = this.availableTasks.filter(it => 
+       it.id!=this.task.id && it.title.toLowerCase().startsWith(filterValue));
+    if (this.selectedRelation == 'parent'){
+      tasks = tasks.filter(it=>
+        it.subTasks == null || it.subTasks.length == 0)
+    }
+    return tasks
+  }
 
   ngOnInit(): void {
     
@@ -42,10 +72,24 @@ export class TaskDetailContainerComponent implements OnInit {
         result=>{
           this.task = new Task(result.data);
           this.titleService.setTitle(this.task.title)
+          
+          if (this.task.parent_id != null) {
+            this.hasParent = true
+          }
+
+          if (this.task.subTasks.length == null || this.task.subTasks.length > 0){
+            this.hasSubtasks = true
+          }
         }
       );
     });
     sub.unsubscribe()
+
+    this.filteredOptions = this.myControl.valueChanges
+    .pipe(
+      startWith(''),
+      map(value => this._filter(value))
+    );
     
     this.userService.getUser().subscribe(
       data=>{
@@ -58,6 +102,78 @@ export class TaskDetailContainerComponent implements OnInit {
         this.team = result.data.map(val=>new TeamMember(val))
       }
     );
+
+    this.taskService.getAllTasks().subscribe(
+      result=>{
+          this.availableTasks = result.data
+        }
+    )
+  }
+
+  onLinkRelationChange(value){
+    this.selectedRelation = value
+  }
+
+  onTaskSelected(event){
+    this.selectedTask = event.option.value
+  }
+
+ displayProperty(value) {
+    if (value) {
+      return value.title;
+    }
+  }
+
+  linkTask(){
+    if (this.selectedRelation == "parent"){
+      this.taskService.updateTask(this.selectedTask.id, {"parent_id": this.task.id}).subscribe(
+        result=>{
+          this.taskService.getTaskById(this.task.id+"").subscribe(
+            result =>{
+              this.task = new Task(result.data)
+            }
+          )
+        }
+      )
+    } else {
+      this.taskService.updateTask(this.task.id, {"parent_id": this.selectedTask.id}).subscribe(
+        result=>{
+          this.taskService.getTaskById(this.task.id+"").subscribe(
+            result =>{
+              this.task = new Task(result.data)
+            }
+          )
+        }
+      )
+    }
+  }
+
+  addTask(){
+    this.router.navigate(['task-list/new-task']);
+  }
+
+  unlinkFromParent(){
+    this.taskService.updateTask(this.task.id, {"parent_id": null}).subscribe(
+      result=>{
+        this.taskService.getTaskById(this.task.id+"").subscribe(
+          result =>{
+            this.task = new Task(result.data)
+          }
+        )
+      }
+    )
+  }
+
+  unlinkSubtask(value){
+    this.taskService.updateTask(value, {"parent_id":null}).subscribe(
+      result=>{
+        this.taskService.getTaskById(this.task.id+"").subscribe(
+          result =>{
+            this.task = new Task(result.data)
+          }
+        )
+      }
+    )
   }
 
   assignToMe(){
@@ -152,5 +268,4 @@ export class TaskDetailContainerComponent implements OnInit {
     }, (reason) => {
     });
   }
-  
 }

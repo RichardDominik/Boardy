@@ -1,51 +1,35 @@
 <div id="auth-wrapper">
-  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  
-      <div *ngIf="errors?.email" class="alert alert-danger mt-3">
-          {{ errors?.email }}
-      </div>
-      <div *ngIf="errors?.password" class="alert alert-danger mt-3">
-          {{ errors?.password }}
-      </div>
-      <div *ngIf="errors?.error" class="alert alert-danger mt-3">
-          {{ errors?.error }}
-      </div>
-      <h2
-      id="title">
-        Boardy
-      </h2>
-      <div class="form-item">
-        <i class="fa fa-user absolute text-primarycolor text-xl"></i>
-        <input
-          class="form-control" formControlName="name"
-          type="text"
-          placeholder="name"
-        />
-      </div>
-      <div class="form-item">
-        <i class="fa fa-at absolute text-primarycolor text-xl"></i>
-        <input
-          class="form-control" formControlName="email"
-          type="text"
-          placeholder="email"
-        />
-      </div>
-      <div class="form-item">
-        <i class="fa fa-lock absolute text-primarycolor text-xl"></i>
-        <input
-         class="form-control" formControlName="password"
-          type="password"
-          placeholder="password"
-        />
-      </div>
-      <div class="form-item">
-        <i class="fa fa-lock absolute text-primarycolor text-xl"></i>
-        <input
-         class="form-control" formControlName="password_confirmation"
-          type="password"
-          placeholder="confirm password"
-        />
-      </div>
-      <button id="submit-button" type="submit" class="btn btn-block btn-primary">Sign up</button>
-      <a routerLink="/sign-in">Already have an account</a>
+    <div *ngIf="errors?.email" class="alert alert-danger mt-3">
+        {{ errors?.email }}
+    </div>
+    <div *ngIf="errors?.password" class="alert alert-danger mt-3">
+        {{ errors?.password }}
+    </div>
+    <div *ngIf="errors?.error" class="alert alert-danger mt-3">
+        {{ errors?.error }}
+    </div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+        <h2 id="title">
+            Boardy
+        </h2>
+        <div class="form-item">
+            <i class="fa fa-user absolute text-primarycolor text-xl"></i>
+            <input class="form-control" formControlName="name" type="text" placeholder="name" />
+        </div>
+        <div class="form-item">
+            <i class="fa fa-at absolute text-primarycolor text-xl"></i>
+            <input class="form-control" formControlName="email" type="text" placeholder="email" />
+        </div>
+        <div class="form-item">
+            <i class="fa fa-lock absolute text-primarycolor text-xl"></i>
+            <input class="form-control" formControlName="password" type="password" placeholder="password" />
+        </div>
+        <div class="form-item">
+            <i class="fa fa-lock absolute text-primarycolor text-xl"></i>
+            <input class="form-control" formControlName="password_confirmation" type="password" placeholder="confirm password" />
+        </div>
+        <button id="submit-button" type="submit" class="btn btn-block btn-primary">Sign up</button>
+        <a routerLink="/sign-in">Already have an account</a>
     </form>
 </div>

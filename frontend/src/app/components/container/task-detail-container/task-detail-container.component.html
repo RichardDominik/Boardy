@@ -5,16 +5,17 @@
     </div>
     <div *ngIf="task?.creator.id != currentUser?.id && task?.assignee != null && task?.assignee.id == currentUser?.id" class="button-container">
         <button class="btn btn-primary unassign" (click)="unasign()">Unassign</button>
-        <button *ngIf="task?.status == 'in_progress'"class="btn btn-primary totest" (click)="totest()">To test</button>
-        <button *ngIf="task?.status == 'to_test'"class="btn btn-primary done" (click)="done()">Done</button>
+        <button *ngIf="task?.status == 'in_progress'" class="btn btn-primary totest" (click)="totest()">To test</button>
+        <button *ngIf="task?.status == 'to_test'" class="btn btn-primary done" (click)="done()">Done</button>
     </div>
     <div *ngIf="task?.creator.id == currentUser?.id" class="button-container">
         <button id="assign-button" class="btn btn-primary" (click)="open(mymodal)">Assign to</button>
-        <button *ngIf="task?.assignee != null && task?.assignee.id == currentUser?.id && task?.status == 'in_progress'"class="btn btn-primary totest" (click)="totest()">To test</button>
-        <button *ngIf="task?.assignee != null && task?.assignee.id == currentUser?.id && task?.status == 'to_test'"class="btn btn-primary done" (click)="done()">Done</button>
+        <button *ngIf="task?.assignee != null && task?.assignee.id == currentUser?.id && task?.status == 'in_progress'" class="btn btn-primary totest" (click)="totest()">To test</button>
+        <button *ngIf="task?.assignee != null && task?.assignee.id == currentUser?.id && task?.status == 'to_test'" class="btn btn-primary done" (click)="done()">Done</button>
     </div>
 </div>
 <app-task-overview *ngIf="task" [task]="task" [user]="currentUser"></app-task-overview>
+
 <div class="people-container">
     <div class="people-detail">
         <h4>Project manager</h4>
@@ -34,7 +35,17 @@
         </ng-template>
     </div>
 </div>
-<app-subtask-list *ngIf="task" [task]="task"></app-subtask-list>
+<div class="task-links-header" *ngIf="task && (task.subTasks.length==0 && !task.parent_id)">
+    <h4>Task links <span class="fa fa-plus" (click)="open(linkModal)"></span></h4>
+</div>
+<div class="empty-links-message" *ngIf="task && (task.subTasks.length==0 && !task.parent_id)">
+    <p>
+        This task has no links.
+    </p>
+</div>
+<app-subtask-list *ngIf="task && (task.subTasks.length > 0 || task.parent_id)" [task]="task" (addTask)="open(linkModal)" (removeParent)="open(deleteModal)" (removeSubtask)="unlinkSubtask($event)"></app-subtask-list>
+
+
 <ng-template #mymodal let-modal>
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Choose a person</h4>
@@ -55,7 +66,7 @@
             <tbody>
                 <tr *ngFor="let person of team" class="team-table-item" (click)="assignTo(person.id); modal.dismiss('Cross click')">
                     <td>{{person.name}}</td>
-                    <td>{{person.rank}}</td>
+                    <td>{{person.rank}}/5</td>
                     <td>
                         <div class="task-table-status {{person.avg_task_priority}}">{{priority[person.avg_task_priority]}}</div>
                     </td>
@@ -64,5 +75,58 @@
             </tbody>
 
         </table>
+    </div>
+</ng-template>
+
+<ng-template #linkModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add task link</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="link-relation-container">
+            <h6>This task is </h6>
+            <select (change)="onLinkRelationChange($event.target.value)">
+                <option value="parent" *ngIf="task.parent_id==null">parent of</option>
+                <option value="subtask" *ngIf="task.parent_id==null && task.subTasks.length == 0">subtask of</option>
+            </select>
+        </div>
+        <div class="link-container">
+            <h6>Task</h6>
+
+            <mat-form-field class="example-full-width">
+                <input type="text" placeholder="Pick task" aria-label="Number" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onTaskSelected($event)" [displayWith]="displayProperty">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                        {{option.title}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+
+        </div>
+        <div>
+            <p>Task has not been created yet? Create it <a class="add-link" (click)="addTask();modal.dismiss('Cross click') ">here</a> and then link</p>
+        </div>
+        <div class="add-button">
+            <button (click)="selectedTask!=null && linkTask();modal.dismiss('Cross click')">Link</button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #deleteModal let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Remove parent link</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <p>Are you sure you want to unlink this task from parent?</p>
+    </div>
+    <div class="delete-options-buttons">
+        <button (click)="modal.dismiss('Cross click')">NO</button>
+        <button (click)="unlinkFromParent();modal.dismiss('Cross click')">YES</button>
     </div>
 </ng-template>

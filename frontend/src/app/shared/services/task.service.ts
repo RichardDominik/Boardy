@@ -15,6 +15,10 @@ export class TaskService {
      return this.http.get<any>('http://notabot.duckdns.org:32768/api/tasks');
    }
 
+   getAllTasks():Observable<any>{
+    return this.http.get<any>('http://notabot.duckdns.org:32768/api/all-tasks-without-parent');
+  }
+
    getTaskById(id:string):Observable<any>{
      return this.http.get<any>('http://notabot.duckdns.org:32768/api/tasks/'+id);
    }

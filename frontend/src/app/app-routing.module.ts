@@ -14,7 +14,9 @@ import { AuthGuardService } from './shared/guards/auth-guard.service';
 
 const routes: Routes = [
   //todo fix repeating guard 
-  { path: '', component: OverviewContainerComponent, canActivate: [AuthGuardService]},
+  { path: 'sign-in', component: SigninComponent, pathMatch: 'full' },
+  { path: 'sign-up', component: SignupComponent, pathMatch: 'full'},
+  { path: '', component: OverviewContainerComponent, canActivate: [AuthGuardService], pathMatch: 'full'},
   { path: 'dashboard', component: OverviewContainerComponent, canActivate: [AuthGuardService]},
   { path: 'task-list', component: TaskListContainerComponent, canActivate: [AuthGuardService], children: [
     { path: '', component: TaskListComponent},
@@ -25,8 +27,7 @@ const routes: Routes = [
     { path: '', component: TeamListComponent},
     { path: 'person-detail', component: PersonDetailContainerComponent},
   ]},
-  { path: 'sign-in', component: SigninComponent },
-  { path: 'sign-up', component: SignupComponent},
+
   { path: '**', component: OverviewContainerComponent, canActivate: [AuthGuardService]}
 ];
 

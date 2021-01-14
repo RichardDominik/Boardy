@@ -126,19 +126,75 @@ tbody {
 }
 
 .assign-link {
-    cursor:pointer;
-    color:blue;
-    text-decoration:underline;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+.task-links-header {
+    margin: 20px 20px 0px 20px;
+}
+
+.link-container,
+.link-relation-container {
+    display: flex;
+}
+
+.link-relation-container h6,
+.link-container h6 {
+    width: 30%;
+}
+
+.link-container a {
+    text-decoration: underline;
+}
+
+.link-container a:hover {
+    cursor: pointer;
+}
+
+.link-container,
+.link-relation-container {
+    margin: 10px;
+}
+
+.add-button {
+    display: grid;
+    justify-content: end;
+}
+
+.delete-options-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.delete-options-buttons button {
+    margin: 10px;
+}
+
+
+/* .md-autocomplete-suggestions-container {
+    z-index: 100000 !important;
+    /* any number of choice > 1050*/
+
+
+/* } */
+
+.cdk-overlay-container {
+    z-index: 20000 !important;
+}
+
+.add-link {
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1024px) {
-
     .people-container {
         margin: 20px 15px 0 15px;
         width: calc(100% - 30px);
     }
-
-    #task-detail-header{
+    #task-detail-header {
         padding: 15px 30px 0px 30px;
     }
 }

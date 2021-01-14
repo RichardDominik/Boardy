@@ -14,7 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
         ) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
-        if(!this.tokenService.isValidToken()){
+        if(!this.tokenService.isValidToken() && this.router.url != "/sign-up"){
             this.router.navigate(['/sing-in']);
         }
         const accessToken = this.tokenService.getToken();

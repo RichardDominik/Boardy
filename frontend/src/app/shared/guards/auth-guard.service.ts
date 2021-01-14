@@ -17,7 +17,7 @@ export class AuthGuardService implements CanActivate{
   ) { }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if(this.tokenService.isLoggedIn()){
+    if(this.tokenService.isLoggedIn() || this.router.url == "/sign-up"){
       return true;
     }
 

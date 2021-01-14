@@ -94,13 +94,17 @@ app-navigation {
     display: none;
 }
 
+.cdk-overlay-container {
+    z-index: 20000 !important;
+}
+
+
 /* Mobile/Tablet resolutions */
 
 @media screen and (max-width: 1024px) {
     app-navigation {
         display: none;
     }
-
     .openMenu app-navigation {
         display: block;
         position: absolute;
@@ -109,14 +113,11 @@ app-navigation {
         height: calc(100% - 50px);
         z-index: 10;
     }
-
     .menu {
         display: inline-block;
     }
-
     #container {
         width: 100%;
         overflow-y: auto;
     }
-
 }
