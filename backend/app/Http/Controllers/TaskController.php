@@ -37,6 +37,14 @@ class TaskController extends Controller
                 $query->whereIn('priority', $request->get('priority'));
             }
 
+            if($request->has('creator')) {
+                $query->whereIn('creator_id', $request->get('creator'));
+            }
+
+            if($request->has('title')) {
+                $query->where('title', 'ilike', '%'. $request->get('title') . '%');
+            }
+
             if($request->has('assignee')) {
                 $query->whereIn('assignee_id', $request->get('assignee'));
             }
