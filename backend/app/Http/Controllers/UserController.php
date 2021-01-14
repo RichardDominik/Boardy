@@ -23,7 +23,7 @@ class UserController extends Controller
             $orderDirection = $request->get('orderDirection');
         }
 
-        return new UserCollection(User::orderBy($orderByColumn, $orderDirection)->paginate());
+        return new UserCollection(User::with('assignedTasks')->orderBy($orderByColumn, $orderDirection)->paginate());
     }
 
     public function all(AllUser $request) : UserCollection {

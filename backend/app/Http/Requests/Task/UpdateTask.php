@@ -31,7 +31,7 @@ class UpdateTask extends FormRequest
         return [
             'title' => ['sometimes', 'string'],
             'estimate' => ['sometimes', 'integer'],
-            'description' => ['sometimes', 'string'],
+            'description' => ['sometimes', 'nullable'],
             'priority' => ['sometimes', Rule::in(Task::getAllPriorities())],
             'status' => ['sometimes', Rule::in(Task::getAllStatuses())],
             'deadline' => ['sometimes', 'date_format:d/m/Y H:i'],

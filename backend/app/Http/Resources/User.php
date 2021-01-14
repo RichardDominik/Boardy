@@ -22,6 +22,9 @@ class User extends JsonResource
             'is_project_manager' => $this->is_project_manager,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'numberOfAssignedTasks' => $this->whenLoaded('assignedTasks', function() {
+                return $this->assignedTasks->count();
+            }),
             'createdTasks' => TaskResource::collection($this->whenLoaded('createdTasks')),
             'assignedTasks' => TaskResource::collection($this->whenLoaded('assignedTasks')),
             'avg_task_priority' => $this->avg_task_priority,
