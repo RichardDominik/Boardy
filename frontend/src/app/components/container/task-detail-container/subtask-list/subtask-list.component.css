@@ -27,14 +27,13 @@ h4 {
 
 .task-table {
   display: inline-block;
-  margin-top: 28px;
+  padding-top: 28px;
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 thead {
-  position: absolute;
   margin-top: -28px;
   display: inline-block;
   width: calc(70% - 201px);
@@ -97,15 +96,30 @@ tbody {
   text-align: left !important;
 }
 
+thead,
+tbody tr {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+tbody {
+    display: block;
+    overflow-y: auto;
+    table-layout: fixed;
+    max-height: 260px;
+}
+
 @media screen and (max-width: 1024px) {
 
   .subtask {
-      margin: 20px 15px 0 15px;
+      margin: 20px 15px 30px 15px;
       width: calc(100% - 30px);
+      
   }
 
-  thead {
-    width: calc(100% - 32px - 10px) !important;
-    overflow: hidden;
+  tr {
+    min-width: 450px;
   }
+
 }

@@ -1,20 +1,14 @@
-#container {
-    background-color: #F2EDF3;
-    height: calc(100vh - 50px);
-    /*50px = header*/
-}
-
 .task-table {
     display: inline-block;
-    height: calc(100% - 30px - 124px - 30px);
-    margin-top: 28px;
+    height: calc(100% - 30px - 124px);
+    padding-top: 28px;
     width: 100%;
     overflow-y: auto;
     overflow-x: hidden;
 }
 
 .task-table-filter {
-    height: calc(100% - 30px - 200px);
+    height: calc(100% - 30px - 374px);
 }
 
 thead {
@@ -80,7 +74,7 @@ h2 {
 }
 
 .task-filter-option {
-    display: inline-block;
+    display: block;
     margin-right: 40px;
 }
 
@@ -138,7 +132,7 @@ h2 {
 
 #task-list-container {
     display: block;
-    margin: 30px;
+    margin: 30px 30px 30px 15px;
     height: calc(100% - 60px);
     border: 1px solid #dddddd;
     border-radius: 20px;
@@ -167,23 +161,13 @@ h2 {
     margin-left: 15px;
 }
 
-.task-table {
-    width: 100%;
-    padding-top: 20px;
-}
-
 .task-table td {
     text-align: center;
-    border-bottom: 1px solid #dddddd;
     padding: 20px 0 20px 0;
 }
 
 .task-table tr {
     text-align: center;
-}
-
-.task-table th {
-    border-bottom: 2px solid #dddddd;
 }
 
 .task-table-status {
@@ -204,36 +188,31 @@ tbody {
     display: block;
     overflow-y: auto;
     table-layout: fixed;
-    max-height: 300px;
-}
-
-#task-list-container {
-    background-color: white;
-    border: 1px solid transparent;
-    border-radius: 20px;
-    margin: 20px;
+    max-height: calc(100% - 1px);
 }
 
 @media screen and (max-width: 1024px) {
     thead {
-        width: calc(100% - 32px) !important;
         overflow: hidden;
     }
     .task-table {
         overflow-x: auto;
-        height: calc(100% - 30px - 113px - 30px);
+    }
+    tbody {
+        max-height: 400px;
     }
     tr {
-        min-width: 600px;
+        min-width: 450px;
     }
     .task-filter-option {
         display: block;
     }
-    .task-table-filter {
-        height: calc(100% - 30px - 200px - 112px);
+    .task-table-filter tbody{
+        max-height: 170px;
     }
     #task-list-container {
-        height: calc(100% - 30px - 48px);
+        height: auto;
+        max-height: 570px;
         margin: 0 15px 30px 15px;
     }
     h2 {

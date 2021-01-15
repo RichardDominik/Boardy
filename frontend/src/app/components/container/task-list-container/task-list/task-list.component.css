@@ -8,7 +8,7 @@
 }
 
 .task-table-filter {
-    height: calc(100% - 30px - 200px);
+    height: calc(100% - 30px - 200px - 36px);
 }
 
 thead {
@@ -182,7 +182,7 @@ h2 {
         display: block;
     }
     .task-table-filter {
-        height: calc(100% - 30px - 200px - 112px);
+        height: calc(100% - 30px - 200px - 112px - 82px);
     }
     #task-list-container {
         height: calc(100% - 30px - 48px);

@@ -4,23 +4,23 @@
     <div class="task-filter-button" (click)="showHideFilter()">Filter</div>
     <div class="common-filters_container">
         <form>
-            <input type="radio" id="all" value="" name="status" (change)="onCustomFilter($event.target.value)" checked/>
-            <label class="radio-label" for="all">All</label>
+            <input type="radio" id="all1" value="" name="status" (change)="onCustomFilter($event.target.value)" checked/>
+            <label class="radio-label" for="all1">All</label>
 
-            <input class="radio-button" type="radio" id="in-progress" value="in_progress" name="status" (change)="onCustomFilter($event.target.value)" />
-            <label class="radio-label" for="in-progress">In progress</label>
+            <input class="radio-button" type="radio" id="in-progress1" value="in_progress" name="status" (change)="onCustomFilter($event.target.value)" />
+            <label class="radio-label" for="in-progress1">In progress</label>
 
-            <input class="radio-button" type="radio" id="test" value="to_test" name="status" (change)="onCustomFilter($event.target.value)" />
-            <label class="radio-label" for="test">To test</label>
+            <input class="radio-button" type="radio" id="test1" value="to_test" name="status" (change)="onCustomFilter($event.target.value)" />
+            <label class="radio-label" for="test1">To test</label>
 
-            <input class="radio-button" type="radio" id="done" value="done" name="status" (change)="onCustomFilter($event.target.value)" />
-            <label class="radio-label" for="done">Done</label>
+            <input class="radio-button" type="radio" id="done1" value="done" name="status" (change)="onCustomFilter($event.target.value)" />
+            <label class="radio-label" for="done1">Done</label>
         </form>
     </div>
     <div [ngClass]="{'task-filter': true, 'hidden': showFilter === false}">
         <div class="task-filter-option">
-            <label for="task-filter-title">Title</label><br>
-            <input id="task-filter-title" type="text" (input)="onFilter($event.target)" />
+            <label for="task-filter-title1">Title</label><br>
+            <input id="task-filter-title1" type="text" (input)="onFilter($event.target)" />
         </div>
         <div class="task-filter-option">
             <label for="task-filter-status">Status</label><br>
